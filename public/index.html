@@ -775,7 +775,8 @@ html, body {
             <!-- ABA: EMPRÉSTIMOS ATUAIS (VISÃO CLEAN) -->
             <section id="tab-jogos">
                 <div style="display:flex; gap:8px; margin-bottom: 18px;">
-                    <button id="subnav-jogos-emuso" class="btn btn-primary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('emuso')">EM USO</button>
+                    <button id="subnav-jogos-emuso" class="btn btn-primary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('emuso')">RETIRADA NORMAL / EM USO</button>
+                    <button id="subnav-jogos-crianca" class="btn btn-secondary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('crianca')">👧 RETIRADA POR CRIANÇA</button>
                     <button id="subnav-jogos-historico" class="btn btn-secondary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('historico')">HISTÓRICO</button>
                 </div>
 
@@ -877,7 +878,7 @@ html, body {
                 </div>
 
                 <!-- Painel de Jogos em Uso -->
-                <div class="card">
+                <div class="card" id="painel-jogos-em-uso">
                     <h2>Jogos em Uso <span style="font-size: 0.9rem; color: var(--danger); font-family: var(--font-body); font-weight: bold;">(Não Devolvidos)</span></h2>
                     <div style="overflow-x: auto;">
                         <table>
@@ -1334,7 +1335,7 @@ html, body {
         const MENSAGENS_PADRAO = {
             retirada: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*!\n\nConfirmamos a retirada da chave e do(s) jogo(s): *{jogo}*.\n\nA retirada foi registrada em {data} para a unidade {apartamento}.\n\n⚠️ *Responsabilidade:* você fica responsável pela chave e pelos equipamentos durante o período de uso.\n\nDesejamos um ótimo jogo! Divirta-se! 🕹️`,
             chave: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*!\n\nConfirmamos a retirada da chave da sala de jogos.\n\nA retirada foi registrada em {data} para a unidade {apartamento}.\n\n⚠️ *Responsabilidade:* você fica responsável pela chave durante o período de uso.\n\nAté já! 🔑`,
-            autorizacao: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*!\n\n*{crianca}* está na portaria para retirar o(s) jogo(s): *{jogo}*. Como se trata de uma pessoa menor de idade, precisamos confirmar se você se responsabiliza pela retirada, pela chave e pelos equipamentos durante o período de uso.\n\n⚠️ Por favor, responda *SIM* para autorizar e se responsabilizar, ou *NÃO* caso não autorize.\n\nAguardamos sua confirmação. 🕹️`,
+            autorizacao: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*! Tudo bem?\n\nA criança *{crianca}* está na portaria para retirar: *{jogo}*, da unidade *{apartamento}*.\n\nComo precisamos da autorização de um responsável, poderia, por gentileza, confirmar se permite a retirada e se responsabiliza pela chave e pelos equipamentos durante o uso?\n\nPara autorizar, responda *SIM*. Caso não autorize, responda *NÃO*, por favor.\n\nAgradecemos sua atenção e colaboração! 🕹️`,
             devolucao: `🎱 Olá! Confirmamos a devolução da chave e do jogo *{jogo}*. O condomínio agradece. Até a próxima!`
         };
 
@@ -1440,14 +1441,37 @@ html, body {
         };
 
         window.mudarSubAbaJogos = function(view) {
-            document.getElementById('jogos-subview-emuso').classList.toggle('hidden', view !== 'emuso');
-            document.getElementById('jogos-subview-historico').classList.toggle('hidden', view !== 'historico');
-            document.getElementById('subnav-jogos-emuso').className = view === 'emuso' ? 'btn btn-primary' : 'btn btn-secondary';
-            document.getElementById('subnav-jogos-historico').className = view === 'historico' ? 'btn btn-primary' : 'btn btn-secondary';
-            document.querySelectorAll('#subnav-jogos-emuso, #subnav-jogos-historico').forEach(b => {
-                b.style.padding = '8px 14px';
-                b.style.fontSize = '.8rem';
+            const childMode = view === 'crianca';
+            const historyMode = view === 'historico';
+            const viewEmUso = document.getElementById('jogos-subview-emuso');
+            const viewHistorico = document.getElementById('jogos-subview-historico');
+            const painelEmUso = document.getElementById('painel-jogos-em-uso');
+            const btnNormal = document.getElementById('subnav-jogos-emuso');
+            const btnCrianca = document.getElementById('subnav-jogos-crianca');
+            const btnHistorico = document.getElementById('subnav-jogos-historico');
+
+            viewEmUso.classList.toggle('hidden', historyMode);
+            viewHistorico.classList.toggle('hidden', !historyMode);
+            if (painelEmUso) painelEmUso.classList.toggle('hidden', childMode);
+
+            [btnNormal, btnCrianca, btnHistorico].forEach(btn => {
+                if (!btn) return;
+                btn.className = 'btn btn-secondary';
+                btn.style.padding = '8px 14px';
+                btn.style.fontSize = '.8rem';
             });
+            const activeBtn = historyMode ? btnHistorico : (childMode ? btnCrianca : btnNormal);
+            if (activeBtn) activeBtn.className = 'btn btn-primary';
+
+            const checkboxCrianca = document.getElementById('retirada-crianca');
+            if (checkboxCrianca) checkboxCrianca.checked = childMode;
+            window.alternarRetiradaCrianca();
+
+            if (childMode) {
+                setTimeout(() => {
+                    document.querySelector('.wizard-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 60);
+            }
         };
 
 
