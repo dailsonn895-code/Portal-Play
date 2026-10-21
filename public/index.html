@@ -125,8 +125,6 @@
         nav button { background: none; border: none; padding: 16px 12px; color: var(--secondary); font-weight: 700; font-family: var(--font-title); font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color 0.2s; }
         nav button:hover { color: var(--primary-hover); }
         nav button.active { color: var(--primary-hover); border-bottom-color: var(--primary-hover);  }
-        #nav-ocorrencias { color: var(--pop); }
-        #nav-ocorrencias.active { color: var(--pop); border-bottom-color: var(--pop); }
         
         main { padding: 24px; max-width: 1200px; margin: 0 auto; width: 100%; flex: 1; }
         
@@ -289,8 +287,6 @@
         }
         nav button { color: #9cafc5; padding: 15px 13px; font-family: var(--font-body); font-size: .74rem; letter-spacing: .055em; }
         nav button.active { color: var(--primary-hover); border-bottom-color: var(--primary); }
-        #nav-ocorrencias { color: var(--pop); }
-        #nav-ocorrencias.active { color: var(--pop); border-bottom-color: var(--pop); }
         main { padding: 32px 24px 48px; }
         .card {
             background: linear-gradient(145deg, rgba(23,40,65,.94), rgba(14,27,46,.94));
@@ -410,8 +406,6 @@
         nav button { color: var(--secondary); font-family: var(--font-body); font-weight: 700; }
         nav button:hover { color: var(--primary); }
         nav button.active { color: var(--primary); border-bottom-color: var(--pop); }
-        #nav-ocorrencias { color: var(--danger); }
-        #nav-ocorrencias.active { color: var(--danger); border-bottom-color: var(--danger); }
         .card {
             background: var(--surface);
             border: 2px solid var(--border);
@@ -632,8 +626,6 @@ html, body {
             box-shadow:0 4px 0 #d9caff;
         }
         .btn-prestador-outline:hover { background:#6C3CE9; color:#fff; }
-        #nav-prestadores { color:#6C3CE9; }
-        #nav-prestadores.active { color:#6C3CE9; border-bottom-color:#6C3CE9; }
         .prestador-autocomplete {
             position:absolute; left:0; right:0; top:100%; z-index:30;
             background:#fff; border:2px solid #d9caff; border-top:none;
@@ -674,8 +666,6 @@ html, body {
 <style id="ocorrencias-historico-visual">
 /* ===== Ocorrências: laranja Claude ===== */
 :root { --claude:#D97757; --claude-dark:#B85C3E; --claude-hover:#E58A6B; --claude-soft:#FBEAE3; --claude-line:#F0C9BA; }
-#nav-ocorrencias { color: var(--claude-dark); }
-#nav-ocorrencias.active { color: var(--claude-dark); border-bottom-color: var(--claude); }
 .btn-ocorrencia { background: var(--claude); border-color: var(--claude); color:#fff; box-shadow: 0 5px 0 var(--claude-dark); }
 .btn-ocorrencia:hover { background: var(--claude-hover); border-color: var(--claude-hover); box-shadow: 0 5px 0 var(--claude-dark); }
 .btn-ocorrencia:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--claude-dark); }
@@ -720,6 +710,26 @@ html, body {
 .hist-acoes { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
 .hist-acoes .btn { width:100%; padding:10px 14px; font-size:.85rem; }
 @media (min-width: 700px) { .hist-acoes { flex-direction:row; } .hist-acoes .btn { width:auto; } }
+
+        /* Histórico mais claro e fácil de usar */
+        .historico-cabecalho { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; flex-wrap:wrap; }
+        .historico-cabecalho .btn { min-height:42px; }
+        .historico-resumo { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 16px; }
+        .historico-resumo span { display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border-radius:10px; background:#f1ecff; color:#4b2bb0; border:1px solid #d9caff; font-size:.82rem; font-weight:800; }
+        .hist-card { box-shadow:0 2px 0 rgba(36,24,84,.04); transition:transform .15s, box-shadow .15s; }
+        .hist-card:hover { transform:translateY(-1px); box-shadow:0 5px 14px rgba(108,60,233,.09); }
+        .hist-acoes { display:flex; flex-wrap:wrap; flex-direction:row; gap:8px; margin-top:14px; }
+        .hist-acoes .btn { flex:1 1 145px; width:auto; min-height:40px; padding:9px 12px; }
+        .hist-linha { gap:8px; flex-wrap:wrap; }
+        .hist-linha span { flex-basis:68px; }
+        .hist-lapis { flex:0 0 34px !important; width:34px !important; padding:2px 6px !important; }
+        @media (max-width:600px) {
+            .historico-cabecalho { flex-direction:column; }
+            .historico-cabecalho .btn { width:100%; }
+            .hist-acoes { flex-direction:column; }
+            .hist-acoes .btn { flex:1 1 auto; width:100%; }
+            .hist-topo { flex-direction:column; }
+        }
 </style>
 </head>
 
@@ -753,8 +763,6 @@ html, body {
 
         <nav id="main-nav">
             <button onclick="window.mudarAba('tab-jogos')" id="nav-jogos" class="active">SALA DE JOGOS</button>
-            <button onclick="window.mudarAba('tab-ocorrencias')" id="nav-ocorrencias">🚨 OCORRÊNCIAS</button>
-            <button onclick="window.mudarAba('tab-prestadores')" id="nav-prestadores">🛠️ PRESTADOR DE SERVIÇO</button>
             <!-- Abas de administração -->
             <button onclick="window.mudarAba('tab-catalogo')" id="nav-catalogo" class="admin-only">CATÁLOGO</button>
             <button onclick="window.mudarAba('tab-moradores')" id="nav-moradores" class="admin-only">MORADORES</button>
@@ -888,8 +896,16 @@ html, body {
 
                 <div id="jogos-subview-historico" class="hidden">
                 <div class="card">
-                    <h2>Histórico Geral</h2>
-                    <button class="btn btn-success admin-only" onclick="window.exportarExcel()" style="margin-bottom: 20px;">Exportar para Excel</button>
+                    <div class="historico-cabecalho">
+                        <div>
+                            <h2 style="margin-bottom:6px;">Histórico de jogos</h2>
+                            <p style="color:var(--secondary);font-size:.9rem;margin-bottom:16px;">Consulte retiradas, devoluções e registros em aberto.</p>
+                        </div>
+                        <button class="btn btn-success admin-only" onclick="window.exportarExcel()">📊 Exportar Excel</button>
+                    </div>
+                    <label for="busca-historico">Buscar no histórico</label>
+                    <input id="busca-historico" type="search" placeholder="Nome, apartamento, jogo ou status..." oninput="window.filtrarHistorico()" style="margin-bottom:16px;">
+                    <div id="historico-resumo" class="historico-resumo"></div>
                     <div id="tabela-historico" class="hist-lista"><p style="color:var(--secondary);">Carregando...</p></div>
                 </div>
                 </div>
@@ -897,111 +913,7 @@ html, body {
 
 
 
-            <!-- ABA: PRESTADOR DE SERVIÇO -->
-            <section id="tab-prestadores" class="hidden">
-                <div class="card wizard-card" style="border-color:#6C3CE9;">
-                    <h2 style="color:#6C3CE9;">🛠️ Registrar Prestador de Serviço</h2>
-                    <p style="color:var(--secondary); margin-bottom:18px;">Preencha em etapas. Os botões desta aba são roxos para diferenciar das demais.</p>
-
-                    <div class="wizard-dots">
-                        <span class="wizard-dot active" id="pdot-1"></span>
-                        <span class="wizard-dot" id="pdot-2"></span>
-                        <span class="wizard-dot" id="pdot-3"></span>
-                    </div>
-
-                    <!-- PASSO 1 -->
-                    <div class="wizard-step" id="pstep-1">
-                        <h3 class="wizard-step-title">1. Quem é o prestador?</h3>
-                        <label>Nome do prestador</label>
-                        <input type="text" id="prestador-nome" placeholder="Nome completo" autocomplete="name">
-
-                        <label style="margin-top:10px;">Categoria do serviço</label>
-                        <select id="prestador-categoria">
-                            <option value="">Selecione a categoria...</option>
-                            <option value="Manutenção">🔧 Manutenção</option>
-                            <option value="Limpeza">🧹 Limpeza</option>
-                            <option value="Obra / Reforma">🏗️ Obra / Reforma</option>
-                            <option value="Instalação">🛠️ Instalação</option>
-                            <option value="Internet / Telecomunicações">📡 Internet / Telecomunicações</option>
-                            <option value="Dedetização">🐜 Dedetização</option>
-                            <option value="Jardinagem">🌱 Jardinagem</option>
-                            <option value="Outro">📋 Outro</option>
-                        </select>
-
-                        <label style="margin-top:10px;">Documento do prestador <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
-                        <input type="text" id="prestador-documento" placeholder="CPF, RG ou outro documento">
-
-                        <label style="margin-top:10px;">Observação <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
-                        <textarea id="prestador-observacao" rows="3" placeholder="Alguma informação sobre o prestador..." style="width:100%;padding:12px;resize:vertical;"></textarea>
-
-                        <label style="margin-top:10px;">Foto do prestador <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
-                        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-                            <img id="prestador-foto-preview" class="foto-mini" alt="Foto do prestador">
-                            <label class="btn btn-prestador-outline" style="cursor:pointer;margin:0;">
-                                📷 TIRAR / CARREGAR FOTO
-                                <input type="file" id="prestador-foto-input" accept="image/*" capture="environment" style="display:none;" onchange="window.capturarFotoPrestador(event)">
-                            </label>
-                            <button type="button" id="prestador-foto-remover" class="btn btn-danger" style="display:none;" onclick="window.removerFotoPrestador()">REMOVER</button>
-                        </div>
-
-                        <button class="btn btn-prestador wizard-next" type="button" onclick="window.prestadorAvancar(2)" style="width:100%;margin-top:18px;">PRÓXIMO →</button>
-                    </div>
-
-                    <!-- PASSO 2 -->
-                    <div class="wizard-step hidden" id="pstep-2">
-                        <h3 class="wizard-step-title">2. Em qual apartamento?</h3>
-                        <label>Buscar morador ou unidade</label>
-                        <div style="position:relative;">
-                            <input type="text" id="prestador-morador-busca" placeholder="Digite nome, nº do apto, letra ou bloco..." autocomplete="off" oninput="window.buscarMoradorPrestador()">
-                            <div id="prestador-morador-sugestoes" class="prestador-autocomplete"></div>
-                        </div>
-                        <div id="prestador-unidade-selecionada" class="prestador-selected hidden"></div>
-
-                        <label class="checkbox-container" style="margin:14px 0 12px;padding:12px;">
-                            <input type="checkbox" id="prestador-servico-interno">
-                            <span class="checkbox-text">🏠 <strong>Serviço interno</strong> — o prestador vai entrar no apartamento.</span>
-                        </label>
-
-                        <label>Observação do serviço <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
-                        <textarea id="prestador-servico-observacao" rows="3" placeholder="Ex.: manutenção do ar-condicionado, instalação, visita técnica..." style="width:100%;padding:12px;resize:vertical;"></textarea>
-
-                        <label style="margin-top:10px;">Foto do local / serviço <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
-                        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-                            <img id="prestador-servico-foto-preview" class="foto-mini" alt="Foto do serviço">
-                            <label class="btn btn-prestador-outline" style="cursor:pointer;margin:0;">
-                                📷 TIRAR / CARREGAR FOTO
-                                <input type="file" id="prestador-servico-foto-input" accept="image/*" capture="environment" style="display:none;" onchange="window.capturarFotoServico(event)">
-                            </label>
-                            <button type="button" id="prestador-servico-foto-remover" class="btn btn-danger" style="display:none;" onclick="window.removerFotoServico()">REMOVER</button>
-                        </div>
-
-                        <div class="wizard-actions" style="margin-top:18px;">
-                            <button class="btn btn-danger" type="button" onclick="window.prestadorIr(1)">VOLTAR</button>
-                            <button class="btn btn-prestador wizard-next" type="button" onclick="window.prestadorAvancar(3)">PRÓXIMO →</button>
-                        </div>
-                    </div>
-
-                    <!-- PASSO 3 -->
-                    <div class="wizard-step hidden" id="pstep-3">
-                        <h3 class="wizard-step-title">3. Conferir dados</h3>
-                        <div id="prestador-resumo" class="prestador-resumo"></div>
-
-                        <div class="wizard-actions" style="margin-top:18px;">
-                            <button class="btn btn-danger" type="button" onclick="window.prestadorIr(2)">VOLTAR</button>
-                            <button class="btn btn-prestador wizard-next" type="button" onclick="window.registrarPrestador()">CONFIRMAR DADOS E ENVIAR WHATSAPP</button>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2>🛠️ Registros recentes</h2>
-                    <p style="color:var(--secondary);font-size:.82rem;margin-top:-10px;margin-bottom:14px;">A entrada é registrada automaticamente. Quando o prestador sair, toque em <strong>REGISTRAR SAÍDA</strong>.</p>
-                    <div id="lista-prestadores">
-                        <p style="color:var(--secondary);">Carregando...</p>
-                    </div>
-                </div>
-            </section>
+            
 
             <!-- ABA: CATÁLOGO DE JOGOS (ADMIN) -->
             <section id="tab-catalogo" class="hidden">
@@ -1029,144 +941,7 @@ html, body {
                 </div>
             </section>
 
-            <!-- ABA: OCORRÊNCIAS -->
-            <section id="tab-ocorrencias" class="hidden">
-                <div style="display:flex; gap:8px; margin-bottom: 18px;">
-                    <button id="subnav-oc-nova" class="btn btn-ocorrencia" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaOcorrencias('nova')">➕ NOVA</button>
-                    <button id="subnav-oc-lista" class="btn btn-ocorrencia-outline" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaOcorrencias('lista')">📋 LISTA</button>
-                </div>
-
-                <div id="oc-subview-nova">
-                <div class="card wizard-card oc-card">
-                    <h2>🚨 Registrar Ocorrência</h2>
-                    <div class="oc-passo" id="oc-passo-txt">Passo 1 de 5</div>
-
-                    <div class="wizard-dots">
-                        <span class="wizard-dot active" id="odot-1"></span>
-                        <span class="wizard-dot" id="odot-2"></span>
-                        <span class="wizard-dot" id="odot-3"></span>
-                        <span class="wizard-dot" id="odot-4"></span>
-                        <span class="wizard-dot" id="odot-5"></span>
-                    </div>
-
-                    <!-- Passo 1: sobre quem é a ocorrência -->
-                    <div class="wizard-step" id="ostep-1">
-                        <h3 class="wizard-step-title">Sobre quem é a ocorrência?</h3>
-                        <label>Nome ou Apartamento</label>
-                        <div style="position: relative;">
-                            <input type="text" id="ocorrencia-morador" placeholder="Digite para buscar..." autocomplete="off" oninput="window.buscarMoradorOcorrencia()" onkeydown="if(event.key==='Enter'){event.preventDefault(); window.ocorrenciaAvancar();}">
-                            <div id="ocorrencia-morador-sugestoes"></div>
-                        </div>
-                        <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.ocorrenciaAvancar()" style="width: 100%; margin-top: 6px;">PRÓXIMO</button>
-
-                        <div style="display:flex; align-items:center; gap:10px; margin:18px 0;">
-                            <div style="flex:1; height:1px; background:var(--border);"></div>
-                            <span style="font-size:.72rem; color:var(--secondary); text-transform:uppercase; letter-spacing:1px;">ou</span>
-                            <div style="flex:1; height:1px; background:var(--border);"></div>
-                        </div>
-
-                        <button class="btn btn-ocorrencia-outline" type="button" onclick="window.abrirAvisoInterno()" style="width:100%;">📋 AVISO INTERNO</button>
-                        <p style="font-size:.78rem; color:var(--secondary); margin-top:6px;">Use para avisos que não são sobre um morador específico — zelador, limpeza, portaria, subsíndica ou síndico.</p>
-
-                        <div id="ocorrencia-aviso-interno-box" class="hidden" style="margin-top:12px; padding:14px; border:1px solid var(--border); border-radius:9px; background:var(--surface);">
-                            <label>Categoria do Aviso</label>
-                            <select id="ocorrencia-aviso-categoria">
-                                <option value="">Selecione...</option>
-                                <option value="Zelador">🧹 Zelador</option>
-                                <option value="Limpeza">🧼 Limpeza</option>
-                                <option value="Porteiros">🚪 Porteiros</option>
-                                <option value="Subsíndica">🏢 Subsíndica</option>
-                                <option value="Síndico">👔 Síndico</option>
-                            </select>
-                            <label style="margin-top: 10px;">Observação (opcional)</label>
-                            <textarea id="ocorrencia-aviso-obs" rows="3" placeholder="Detalhe o aviso, se quiser..." style="width:100%; font-family:inherit; font-size:.95rem; padding:12px; resize:vertical;"></textarea>
-                            <div class="wizard-actions" style="margin-top:12px;">
-                                <button class="btn btn-ocorrencia-outline" type="button" onclick="window.fecharAvisoInterno()">CANCELAR</button>
-                                <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.confirmarAvisoInterno()">✔ CONFIRMAR AVISO</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Passo 2: unidade -->
-                    <div class="wizard-step hidden" id="ostep-2">
-                        <h3 class="wizard-step-title">Qual é a unidade?</h3>
-                        <div class="apto-grid">
-                            <input type="number" id="ocorrencia-apto-num" placeholder="Nº (Ex: 101)">
-                            <input type="text" id="ocorrencia-apto-letra" placeholder="Letra (Ex: A)" maxlength="2">
-                            <input type="text" id="ocorrencia-bloco" placeholder="Bloco (Ex: B)" maxlength="2">
-                        </div>
-                        <p style="font-size:.78rem; color:var(--secondary); margin-top:8px;">Pode deixar em branco se não se aplicar.</p>
-                        <div class="wizard-actions">
-                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(1)">VOLTAR</button>
-                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.wizardOcorrenciaIr(3)">PRÓXIMO</button>
-                        </div>
-                    </div>
-
-                    <!-- Passo 3: tipo -->
-                    <div class="wizard-step hidden" id="ostep-3">
-                        <h3 class="wizard-step-title">Que tipo de ocorrência?</h3>
-                        <input type="hidden" id="ocorrencia-tipo" value="">
-                        <div class="oc-chips"><button type="button" class="oc-chip" data-valor="Barulho" onclick="window.ocorrenciaEscolherTipo('Barulho')"><span>🔊</span>Barulho</button><button type="button" class="oc-chip" data-valor="Apartamento" onclick="window.ocorrenciaEscolherTipo('Apartamento')"><span>🏠</span>Apartamento</button><button type="button" class="oc-chip" data-valor="Sala de Jogos" onclick="window.ocorrenciaEscolherTipo('Sala de Jogos')"><span>🎮</span>Sala de jogos</button><button type="button" class="oc-chip" data-valor="Garagem" onclick="window.ocorrenciaEscolherTipo('Garagem')"><span>🚗</span>Garagem</button><button type="button" class="oc-chip" data-valor="Encomenda" onclick="window.ocorrenciaEscolherTipo('Encomenda')"><span>📦</span>Encomenda</button><button type="button" class="oc-chip" data-valor="Visitante" onclick="window.ocorrenciaEscolherTipo('Visitante')"><span>👤</span>Visitante</button><button type="button" class="oc-chip" data-valor="Outros" onclick="window.ocorrenciaEscolherTipo('Outros')"><span>⚠️</span>Outros</button></div>
-                        <div class="wizard-actions">
-                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(2)">VOLTAR</button>
-                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.wizardOcorrenciaIr(4)">PRÓXIMO</button>
-                        </div>
-                    </div>
-
-                    <!-- Passo 4: prioridade e status -->
-                    <div class="wizard-step hidden" id="ostep-4">
-                        <h3 class="wizard-step-title">Qual a prioridade?</h3>
-                        <label>Prioridade</label>
-                        <select id="ocorrencia-prioridade"><option value="normal">🟢 Normal</option><option value="atencao">🟡 Atenção</option><option value="urgente">🔴 Urgente</option></select>
-                        <label style="margin-top:10px;">Status</label>
-                        <select id="ocorrencia-status"><option value="aberta">🔴 Aberta</option><option value="andamento">🟡 Em andamento</option><option value="resolvida">🟢 Resolvida</option></select>
-                        <div class="wizard-actions" style="margin-top:14px;">
-                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(3)">VOLTAR</button>
-                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.wizardOcorrenciaIr(5)">PRÓXIMO</button>
-                        </div>
-                    </div>
-
-                    <!-- Passo 5: observação e foto -->
-                    <div class="wizard-step hidden" id="ostep-5">
-                        <h3 class="wizard-step-title">O que aconteceu?</h3>
-                        <label>Observação</label>
-                        <textarea id="ocorrencia-observacao" rows="4" placeholder="Descreva o ocorrido ou o lembrete para o próximo turno..." style="width:100%; font-family:inherit; font-size:.95rem; padding:12px; resize:vertical;"></textarea>
-
-                        <label style="margin-top: 10px;">Foto (opcional)</label>
-                        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-                            <img id="ocorrencia-foto-preview" alt="Prévia da foto" style="display:none; width:64px; height:64px; object-fit:cover; border-radius:9px; border:1px solid var(--border);">
-                            <label class="btn btn-ocorrencia-outline" style="cursor:pointer; margin:0;">
-                                📷 TIRAR FOTO
-                                <input type="file" id="ocorrencia-foto-input" accept="image/*" capture="environment" style="display:none;" onchange="window.capturarFotoOcorrencia(event)">
-                            </label>
-                            <button type="button" id="ocorrencia-foto-remover" class="btn btn-ocorrencia-outline" style="display:none;" onclick="window.removerFotoOcorrencia()">REMOVER FOTO</button>
-                        </div>
-
-                        <div class="wizard-actions">
-                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(4)">VOLTAR</button>
-                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.registrarOcorrencia()">📌 REGISTRAR</button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                <div id="oc-subview-lista" class="hidden">
-                <div class="card oc-card">
-                    <h2>🚨 Ocorrências</h2>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
-                        <input id="busca-ocorrencias" type="search" placeholder="🔎 Buscar nome ou apartamento..." oninput="window.aplicarFiltrosOcorrencias()">
-                        <select id="filtro-periodo-ocorrencias" onchange="window.aplicarFiltrosOcorrencias()"><option value="todos">📅 Todos os períodos</option><option value="hoje">Hoje</option><option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option></select>
-                    </div>
-                    <div class="btn-row" style="margin-bottom: 14px;">
-                        <button id="filtro-ocorrencias-abertas" class="btn btn-ocorrencia" style="padding:8px 14px; font-size:.8rem;" onclick="window.filtrarOcorrencias('abertas')">ABERTAS</button>
-                        <button id="filtro-ocorrencias-todas" class="btn btn-ocorrencia-outline" style="padding:8px 14px; font-size:.8rem;" onclick="window.filtrarOcorrencias('todas')">TODAS</button>
-                    </div>
-                    <div id="lista-ocorrencias">
-                        <p style="color: var(--secondary);">Carregando...</p>
-                    </div>
-                </div>
-                </div>
-            </section>
+            
             <!-- ABA: ADICIONAR MORADOR (OPERADOR) -->
             <section id="tab-adicionar-morador" class="hidden">
                 <div class="card" style="border-color: var(--success);">
@@ -1199,7 +974,7 @@ html, body {
 
                 <div class="card" style="border-color:var(--primary);">
                     <h3 style="margin-bottom:8px;">🎮 Depois do cadastro</h3>
-                    <p style="color:var(--secondary); margin-bottom:14px;">O morador fica disponível imediatamente para a retirada de jogos, chave e para o registro de ocorrências.</p>
+                    <p style="color:var(--secondary); margin-bottom:14px;">O morador fica disponível imediatamente para retirar jogos e chaves e consultar o histórico de uso.</p>
                     <button class="btn btn-primary" type="button" onclick="window.mudarAba('tab-jogos')" style="width:100%;">🎮 IR PARA SALA DE JOGOS</button>
                 </div>
             </section>
@@ -1550,7 +1325,7 @@ html, body {
             carregarMensagens();
             carregarCatalogoRealtime();
             carregarEmprestimosRealtime();
-            carregarOcorrenciasRealtime();
+
             carregarPrestadoresRealtime();
             carregarUsuariosRealtime();
         };
@@ -2830,7 +2605,7 @@ html, body {
             }
         };
 
-        // Mesmo problema do histórico de empréstimos: baixar TODAS as ocorrências
+        // Mesmo problema do histórico de empréstimos: baixar TODAS as jogos
         // já registradas a cada login fica mais lento com o tempo. Agora mantemos
         // sempre as não resolvidas (poucas) + as últimas registradas, e a exclusão
         // manual continua funcionando normalmente pois ela apaga direto no banco.
@@ -3254,11 +3029,29 @@ html, body {
         function renderizarHistorico() {
             const lista = document.getElementById('tabela-historico');
             lista.innerHTML = '';
+            const busca = (document.getElementById('busca-historico')?.value || '').trim().toLocaleLowerCase('pt-BR');
+            const registros = historicoCompleto.filter(data => {
+                const retirado = data.status === 'retirado';
+                const apto = formatarAptoDisplay(data.aptoNum, data.aptoLetra, data.bloco, data.apartamento);
+                const texto = [data.moradorNome, apto, data.aptoNum, data.aptoLetra, data.bloco, data.jogoNome,
+                    retirado ? 'em uso aberto retirado pendente' : 'devolvido concluído'].filter(Boolean).join(' ').toLocaleLowerCase('pt-BR');
+                return texto.includes(busca);
+            });
+            const resumo = document.getElementById('historico-resumo');
+            if (resumo) {
+                const emUso = historicoCompleto.filter(d => d.status === 'retirado').length;
+                const devolvidos = historicoCompleto.length - emUso;
+                resumo.innerHTML = `<span>📋 ${historicoCompleto.length} registros</span><span>⏳ ${emUso} em uso</span><span>✅ ${devolvidos} devolvidos</span>`;
+            }
             if (historicoCompleto.length === 0) {
                 lista.innerHTML = '<p style="color:var(--secondary);">Nenhum registro ainda.</p>';
                 return;
             }
-            historicoCompleto.forEach(data => {
+            if (registros.length === 0) {
+                lista.innerHTML = '<p style="color:var(--secondary);">Nenhum resultado para essa busca.</p>';
+                return;
+            }
+            registros.forEach(data => {
                 const retirado = data.status === 'retirado';
                 const nomeFormatado = (data.moradorNome || '').toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase());
                 const aptoDisplay = formatarAptoDisplay(data.aptoNum, data.aptoLetra, data.bloco, data.apartamento);
