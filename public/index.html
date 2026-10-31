@@ -13,7 +13,7 @@
     <!-- SheetJS é carregado sob demanda (ver carregarSheetJS) apenas ao exportar/importar planilha -->
     <!-- Google Fonts para visual Gamer -->
     <!-- Fonte externa removida para acelerar a primeira abertura -->
-    
+
 <style>
         :root {
             --bg-base: #1E1A17; /* Madeira bem escura / Carvão */
@@ -26,70 +26,70 @@
             --success: #5D803E; /* Verde grama / Feltro de bilhar */
             --danger: #A64238; /* Vermelho tijolo aparente */
             --shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            
+
             --font-title: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
         }
-        
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-base); color: var(--text); font-family: var(--font-body); font-size: 1.1rem; }
-        
+
         /* Utilidades */
         .hidden { display: none !important; }
-        
-        .btn { 
-            padding: 10px 20px; 
-            border: 2px solid transparent; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-weight: 700; 
+
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
             font-family: var(--font-title);
             font-size: 0.9rem;
             text-transform: uppercase;
-            transition: all 0.3s ease; 
-            color: var(--bg-base); 
+            transition: all 0.3s ease;
+            color: var(--bg-base);
         }
-        
-        .btn-primary { 
-            background-color: var(--primary); 
+
+        .btn-primary {
+            background-color: var(--primary);
             border-color: var(--primary);
         }
-        .btn-primary:hover { 
-            background-color: var(--primary-hover); 
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
             border-color: var(--primary-hover);
-            box-shadow: var(--shadow); 
+            box-shadow: var(--shadow);
         }
-        
-        .btn-danger { 
-            background-color: transparent; 
+
+        .btn-danger {
+            background-color: transparent;
             color: var(--danger);
             border-color: var(--danger);
         }
-        .btn-danger:hover { 
+        .btn-danger:hover {
             background-color: var(--danger);
             color: white;
-            box-shadow: var(--shadow); 
+            box-shadow: var(--shadow);
         }
 
-        .btn-success { 
-            background-color: transparent; 
+        .btn-success {
+            background-color: transparent;
             color: var(--success);
             border-color: var(--success);
         }
-        .btn-success:hover { 
+        .btn-success:hover {
             background-color: var(--success);
             color: var(--bg-base);
-            box-shadow: var(--shadow); 
+            box-shadow: var(--shadow);
         }
-        
-        input, select { 
-            padding: 12px; 
+
+        input, select {
+            padding: 12px;
             background-color: #1A1512;
-            border: 1px solid var(--primary); 
+            border: 1px solid var(--primary);
             color: var(--primary-hover);
-            border-radius: 4px; 
-            width: 100%; 
-            margin-bottom: 12px; 
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 12px;
             font-family: var(--font-body);
             font-size: 1.1rem;
             font-weight: 600;
@@ -99,7 +99,7 @@
             box-shadow: var(--shadow);
         }
         input::placeholder { color: #4F637A; }
-        
+
         label {
             display: block;
             margin-bottom: 6px;
@@ -109,46 +109,48 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
         }
-        
+
         /* Telas */
         #login-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: linear-gradient(135deg, #2D2520 0%, #1E1A17 100%); }
         .login-box { background: rgba(45, 37, 32, 0.9); padding: 40px; border-radius: 8px; border: 1px solid var(--primary); box-shadow: var(--shadow); width: 100%; max-width: 400px; text-align: center; backdrop-filter: blur(10px); }
         .login-box h1 { margin-bottom: 30px; color: var(--primary-hover); font-family: var(--font-title); font-size: 1.8rem;  }
-        
+
         #app-screen { display: flex; flex-direction: column; min-height: 100vh; }
         header { background: var(--surface); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); }
         header h2 { font-family: var(--font-title); color: var(--primary-hover); margin: 0; font-size: 1.5rem;  }
         .user-info { display: flex; align-items: center; gap: 16px; }
         .role-badge { background: var(--primary); color: var(--bg-base); padding: 4px 8px; border-radius: 4px; font-weight: bold; font-family: var(--font-title); font-size: 0.7rem; letter-spacing: 1px;}
-        
+
         nav { background: var(--surface); padding: 0 24px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid var(--border); }
         nav button { background: none; border: none; padding: 16px 12px; color: var(--secondary); font-weight: 700; font-family: var(--font-title); font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color 0.2s; }
         nav button:hover { color: var(--primary-hover); }
         nav button.active { color: var(--primary-hover); border-bottom-color: var(--primary-hover);  }
-        
+        #nav-ocorrencias { color: var(--pop); }
+        #nav-ocorrencias.active { color: var(--pop); border-bottom-color: var(--pop); }
+
         main { padding: 24px; max-width: 1200px; margin: 0 auto; width: 100%; flex: 1; }
-        
+
         /* Componentes */
         .card { background: var(--surface); padding: 30px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.3); margin-bottom: 24px; position: relative; overflow: hidden; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--primary), transparent); }
-        
+
         h2 { margin-bottom: 20px; font-size: 1.5rem; font-family: var(--font-title); color: var(--text); }
-        
+
         table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 1rem; }
         th, td { padding: 14px; text-align: left; border-bottom: 1px solid var(--border); }
         th { font-weight: 700; color: var(--primary); font-family: var(--font-title); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
         tr:hover td { background-color: rgba(69, 162, 158, 0.05); }
-        
+
         #banner-status { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 4px; font-family: var(--font-title); font-weight: bold; font-size: 0.9rem; z-index: 1000; transition: opacity 0.3s, transform 0.3s; opacity: 0; transform: translateY(-20px); pointer-events: none; border: 1px solid; }
         #banner-status.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
         .bg-success { background-color: rgba(0, 230, 118, 0.1); color: var(--success); border-color: var(--success);  backdrop-filter: blur(5px);}
         .bg-danger { background-color: rgba(255, 23, 68, 0.1); color: var(--danger); border-color: var(--danger);  backdrop-filter: blur(5px);}
         .bg-info { background-color: rgba(102, 252, 241, 0.1); color: var(--primary-hover); border-color: var(--primary); box-shadow: var(--shadow); backdrop-filter: blur(5px);}
-        
+
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .apto-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        @media (max-width: 768px) { 
-            .form-grid { grid-template-columns: 1fr; } 
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
         }
 
         /* Checkbox customizado estilo gamer */
@@ -287,6 +289,8 @@
         }
         nav button { color: #9cafc5; padding: 15px 13px; font-family: var(--font-body); font-size: .74rem; letter-spacing: .055em; }
         nav button.active { color: var(--primary-hover); border-bottom-color: var(--primary); }
+        #nav-ocorrencias { color: var(--pop); }
+        #nav-ocorrencias.active { color: var(--pop); border-bottom-color: var(--pop); }
         main { padding: 32px 24px 48px; }
         .card {
             background: linear-gradient(145deg, rgba(23,40,65,.94), rgba(14,27,46,.94));
@@ -406,6 +410,8 @@
         nav button { color: var(--secondary); font-family: var(--font-body); font-weight: 700; }
         nav button:hover { color: var(--primary); }
         nav button.active { color: var(--primary); border-bottom-color: var(--pop); }
+        #nav-ocorrencias { color: var(--danger); }
+        #nav-ocorrencias.active { color: var(--danger); border-bottom-color: var(--danger); }
         .card {
             background: var(--surface);
             border: 2px solid var(--border);
@@ -626,6 +632,8 @@ html, body {
             box-shadow:0 4px 0 #d9caff;
         }
         .btn-prestador-outline:hover { background:#6C3CE9; color:#fff; }
+        #nav-prestadores { color:#6C3CE9; }
+        #nav-prestadores.active { color:#6C3CE9; border-bottom-color:#6C3CE9; }
         .prestador-autocomplete {
             position:absolute; left:0; right:0; top:100%; z-index:30;
             background:#fff; border:2px solid #d9caff; border-top:none;
@@ -666,6 +674,8 @@ html, body {
 <style id="ocorrencias-historico-visual">
 /* ===== Ocorrências: laranja Claude ===== */
 :root { --claude:#D97757; --claude-dark:#B85C3E; --claude-hover:#E58A6B; --claude-soft:#FBEAE3; --claude-line:#F0C9BA; }
+#nav-ocorrencias { color: var(--claude-dark); }
+#nav-ocorrencias.active { color: var(--claude-dark); border-bottom-color: var(--claude); }
 .btn-ocorrencia { background: var(--claude); border-color: var(--claude); color:#fff; box-shadow: 0 5px 0 var(--claude-dark); }
 .btn-ocorrencia:hover { background: var(--claude-hover); border-color: var(--claude-hover); box-shadow: 0 5px 0 var(--claude-dark); }
 .btn-ocorrencia:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--claude-dark); }
@@ -730,6 +740,26 @@ html, body {
             .hist-acoes .btn { flex:1 1 auto; width:100%; }
             .hist-topo { flex-direction:column; }
         }
+
+/* Identidade das novas áreas */
+#nav-outras-chaves {color:#1554a2} #nav-outras-chaves.active {color:#12478b;border-bottom-color:#2469c9}
+#tab-outras-chaves .btn-chave {background:#2167c8;border:2px solid #2167c8;color:white;box-shadow:0 4px 0 #164786}
+#tab-outras-chaves .btn-chave:active {transform:translateY(3px);box-shadow:0 1px 0 #164786}
+#tab-outras-chaves .card {border-color:#b9d3fa} #tab-outras-chaves h2 {color:#154c91}
+#nav-ocorrencias,#nav-ocorrencias.active {color:#8c1830!important} #nav-ocorrencias.active {border-bottom-color:#9e1e39!important}
+#tab-ocorrencias .btn-primary {background:#bb2441!important;border-color:#bb2441!important;color:white!important;box-shadow:0 4px 0 #87172e!important}
+#tab-ocorrencias .btn-ocorrencia {background:#bb2441!important;border-color:#bb2441!important;color:white!important;box-shadow:0 4px 0 #87172e!important}
+#tab-ocorrencias .btn-ocorrencia-outline {color:#9a2039!important;border-color:#b32b45!important}
+#tab-ocorrencias .oc-card {border-color:#efd9df!important} #tab-ocorrencias .oc-card::before {background:#b52d45!important}
+#tab-ocorrencias .oc-card>h2,#tab-ocorrencias .wizard-step-title {color:#8c1830!important}
+#nav-prestadores,#nav-prestadores.active {color:#17633f!important} #nav-prestadores.active {border-bottom-color:#17633f!important}
+#tab-prestadores .btn-primary {background:#17633f!important;border-color:#17633f!important;color:white!important;box-shadow:0 4px 0 #0c3d26!important}
+#tab-prestadores .btn-prestador {background:#17633f!important;border-color:#17633f!important;color:#fff!important;box-shadow:0 4px 0 #0c3d26!important}
+#tab-prestadores .btn-prestador-outline {color:#17633f!important;border-color:#17633f!important}
+.chave-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.chave-item {background:#f4f8ff;border:1px solid #c9dbf5;border-radius:12px;padding:12px;margin-bottom:8px}
+.chave-item strong {overflow-wrap:anywhere} .chave-item button {margin-top:8px}
+.chave-field {margin:12px 0} .chave-muted {font-size:.85rem;color:#675d82}
 </style>
 </head>
 
@@ -762,7 +792,10 @@ html, body {
         </header>
 
         <nav id="main-nav">
-            <button onclick="window.mudarAba('tab-jogos')" id="nav-jogos" class="active">SALA DE JOGOS</button>
+            <button onclick="window.mudarAba('tab-jogos')" id="nav-jogos" class="active">🎮 JOGOS</button>
+            <button onclick="window.mudarAba('tab-outras-chaves')" id="nav-outras-chaves">🔑 OUTRAS CHAVES</button>
+            <button onclick="window.mudarAba('tab-ocorrencias')" id="nav-ocorrencias">🚨 OCORRÊNCIAS</button>
+            <button onclick="window.mudarAba('tab-prestadores')" id="nav-prestadores">🛠️ PRESTADOR DE SERVIÇO</button>
             <!-- Abas de administração -->
             <button onclick="window.mudarAba('tab-catalogo')" id="nav-catalogo" class="admin-only">CATÁLOGO</button>
             <button onclick="window.mudarAba('tab-moradores')" id="nav-moradores" class="admin-only">MORADORES</button>
@@ -772,6 +805,24 @@ html, body {
         </nav>
 
         <main>
+
+<section id="tab-outras-chaves" class="hidden">
+ <div class="card"><h2>🔑 Outras Chaves</h2><p class="chave-muted">Registre a retirada de chaves de moradores e funcionários. As chaves em uso ficam listadas abaixo.</p>
+  <div class="chave-field"><label>Quem vai retirar?</label><select id="chave-tipo" onchange="window.chaveTrocarTipo()"><option value="morador">Morador</option><option value="funcionario">Funcionário / uso interno</option></select></div>
+  <div id="chave-bloco-morador">
+   <label>Buscar morador cadastrado</label><input id="chave-morador-busca" placeholder="Digite nome ou apartamento" oninput="window.chaveBuscarMorador()" autocomplete="off">
+   <div id="chave-morador-sugestoes" class="chave-grid"></div><p id="chave-morador-selecionado" class="chave-muted">Selecione um morador da lista para usar seus dados de cadastro.</p>
+  </div>
+  <div id="chave-bloco-funcionario" class="hidden"><label>Funcionário que retirou</label><select id="chave-funcionario" onchange="window.chaveTrocarFuncionario()"></select>
+  <div id="chave-outro-funcionario" class="hidden"><label>Nome do funcionário</label><input id="chave-funcionario-outro" placeholder="Digite o nome"></div></div>
+  <div class="chave-field"><label>Chave</label><select id="chave-item-select"></select></div>
+  <div class="chave-field"><label>Finalidade / observação (opcional)</label><textarea id="chave-observacao" rows="2" style="width:100%;padding:12px" placeholder="Ex.: manutenção de rotina"></textarea></div>
+  <button class="btn btn-chave" onclick="window.chaveRegistrar()">🔑 CONFIRMAR RETIRADA</button>
+ </div>
+ <div class="card"><h2>Chaves em uso</h2><div id="chave-ativas">Carregando...</div></div>
+ <div class="card"><h2>Histórico de outras chaves</h2><div id="chave-historico">Carregando...</div></div>
+</section>
+
             <!-- ABA: EMPRÉSTIMOS ATUAIS (VISÃO CLEAN) -->
             <section id="tab-jogos">
                 <div style="display:flex; gap:8px; margin-bottom: 18px;">
@@ -868,7 +919,7 @@ html, body {
                             </div>
                         </div>
 
-                        
+
 
                         <div class="wizard-actions">
                             <button class="btn btn-danger" type="button" onclick="window.wizardIr(2)">VOLTAR</button>
@@ -914,7 +965,113 @@ html, body {
 
 
 
-            
+
+
+            <!-- ABA: PRESTADOR DE SERVIÇO -->
+            <section id="tab-prestadores" class="hidden">
+                <div class="card wizard-card" style="border-color:#6C3CE9;">
+                    <h2 style="color:#6C3CE9;">🛠️ Registrar Prestador de Serviço</h2>
+                    <p style="color:var(--secondary); margin-bottom:18px;">Preencha em etapas. Os botões desta aba são verdes para diferenciar das demais.</p>
+
+                    <div class="wizard-dots">
+                        <span class="wizard-dot active" id="pdot-1"></span>
+                        <span class="wizard-dot" id="pdot-2"></span>
+                        <span class="wizard-dot" id="pdot-3"></span>
+                    </div>
+
+                    <!-- PASSO 1 -->
+                    <div class="wizard-step" id="pstep-1">
+                        <h3 class="wizard-step-title">1. Quem é o prestador?</h3>
+                        <label>Nome do prestador</label>
+                        <input type="text" id="prestador-nome" placeholder="Nome completo" autocomplete="name">
+
+                        <label style="margin-top:10px;">Categoria do serviço</label>
+                        <select id="prestador-categoria">
+                            <option value="">Selecione a categoria...</option>
+                            <option value="Manutenção">🔧 Manutenção</option>
+                            <option value="Limpeza">🧹 Limpeza</option>
+                            <option value="Obra / Reforma">🏗️ Obra / Reforma</option>
+                            <option value="Instalação">🛠️ Instalação</option>
+                            <option value="Internet / Telecomunicações">📡 Internet / Telecomunicações</option>
+                            <option value="Dedetização">🐜 Dedetização</option>
+                            <option value="Jardinagem">🌱 Jardinagem</option>
+                            <option value="Outro">📋 Outro</option>
+                        </select>
+
+                        <label style="margin-top:10px;">Documento do prestador <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
+                        <input type="text" id="prestador-documento" placeholder="CPF, RG ou outro documento">
+
+                        <label style="margin-top:10px;">Observação <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
+                        <textarea id="prestador-observacao" rows="3" placeholder="Alguma informação sobre o prestador..." style="width:100%;padding:12px;resize:vertical;"></textarea>
+
+                        <label style="margin-top:10px;">Foto do prestador <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
+                        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                            <img id="prestador-foto-preview" class="foto-mini" alt="Foto do prestador">
+                            <label class="btn btn-prestador-outline" style="cursor:pointer;margin:0;">
+                                📷 TIRAR / CARREGAR FOTO
+                                <input type="file" id="prestador-foto-input" accept="image/*" capture="environment" style="display:none;" onchange="window.capturarFotoPrestador(event)">
+                            </label>
+                            <button type="button" id="prestador-foto-remover" class="btn btn-danger" style="display:none;" onclick="window.removerFotoPrestador()">REMOVER</button>
+                        </div>
+
+                        <button class="btn btn-prestador wizard-next" type="button" onclick="window.prestadorAvancar(2)" style="width:100%;margin-top:18px;">PRÓXIMO →</button>
+                    </div>
+
+                    <!-- PASSO 2 -->
+                    <div class="wizard-step hidden" id="pstep-2">
+                        <h3 class="wizard-step-title">2. Em qual apartamento?</h3>
+                        <label>Buscar morador ou unidade</label>
+                        <div style="position:relative;">
+                            <input type="text" id="prestador-morador-busca" placeholder="Digite nome, nº do apto, letra ou bloco..." autocomplete="off" oninput="window.buscarMoradorPrestador()">
+                            <div id="prestador-morador-sugestoes" class="prestador-autocomplete"></div>
+                        </div>
+                        <div id="prestador-unidade-selecionada" class="prestador-selected hidden"></div>
+
+                        <label class="checkbox-container" style="margin:14px 0 12px;padding:12px;">
+                            <input type="checkbox" id="prestador-servico-interno">
+                            <span class="checkbox-text">🏠 <strong>Serviço interno</strong> — o prestador vai entrar no apartamento.</span>
+                        </label>
+
+                        <label>Observação do serviço <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
+                        <textarea id="prestador-servico-observacao" rows="3" placeholder="Ex.: manutenção do ar-condicionado, instalação, visita técnica..." style="width:100%;padding:12px;resize:vertical;"></textarea>
+
+                        <label style="margin-top:10px;">Foto do local / serviço <span style="font-weight:normal;color:var(--secondary);">(opcional)</span></label>
+                        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                            <img id="prestador-servico-foto-preview" class="foto-mini" alt="Foto do serviço">
+                            <label class="btn btn-prestador-outline" style="cursor:pointer;margin:0;">
+                                📷 TIRAR / CARREGAR FOTO
+                                <input type="file" id="prestador-servico-foto-input" accept="image/*" capture="environment" style="display:none;" onchange="window.capturarFotoServico(event)">
+                            </label>
+                            <button type="button" id="prestador-servico-foto-remover" class="btn btn-danger" style="display:none;" onclick="window.removerFotoServico()">REMOVER</button>
+                        </div>
+
+                        <div class="wizard-actions" style="margin-top:18px;">
+                            <button class="btn btn-danger" type="button" onclick="window.prestadorIr(1)">VOLTAR</button>
+                            <button class="btn btn-prestador wizard-next" type="button" onclick="window.prestadorAvancar(3)">PRÓXIMO →</button>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 3 -->
+                    <div class="wizard-step hidden" id="pstep-3">
+                        <h3 class="wizard-step-title">3. Conferir dados</h3>
+                        <div id="prestador-resumo" class="prestador-resumo"></div>
+
+                        <div class="wizard-actions" style="margin-top:18px;">
+                            <button class="btn btn-danger" type="button" onclick="window.prestadorIr(2)">VOLTAR</button>
+                            <button class="btn btn-prestador wizard-next" type="button" onclick="window.registrarPrestador()">CONFIRMAR DADOS E ENVIAR WHATSAPP</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <h2>🛠️ Registros recentes</h2>
+                    <p style="color:var(--secondary);font-size:.82rem;margin-top:-10px;margin-bottom:14px;">A entrada é registrada automaticamente. Quando o prestador sair, toque em <strong>REGISTRAR SAÍDA</strong>.</p>
+                    <div id="lista-prestadores">
+                        <p style="color:var(--secondary);">Carregando...</p>
+                    </div>
+                </div>
+            </section>
 
             <!-- ABA: CATÁLOGO DE JOGOS (ADMIN) -->
             <section id="tab-catalogo" class="hidden">
@@ -942,7 +1099,144 @@ html, body {
                 </div>
             </section>
 
-            
+            <!-- ABA: OCORRÊNCIAS -->
+            <section id="tab-ocorrencias" class="hidden">
+                <div style="display:flex; gap:8px; margin-bottom: 18px;">
+                    <button id="subnav-oc-nova" class="btn btn-ocorrencia" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaOcorrencias('nova')">➕ NOVA</button>
+                    <button id="subnav-oc-lista" class="btn btn-ocorrencia-outline" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaOcorrencias('lista')">📋 LISTA</button>
+                </div>
+
+                <div id="oc-subview-nova">
+                <div class="card wizard-card oc-card">
+                    <h2>🚨 Registrar Ocorrência</h2>
+                    <div class="oc-passo" id="oc-passo-txt">Passo 1 de 5</div>
+
+                    <div class="wizard-dots">
+                        <span class="wizard-dot active" id="odot-1"></span>
+                        <span class="wizard-dot" id="odot-2"></span>
+                        <span class="wizard-dot" id="odot-3"></span>
+                        <span class="wizard-dot" id="odot-4"></span>
+                        <span class="wizard-dot" id="odot-5"></span>
+                    </div>
+
+                    <!-- Passo 1: sobre quem é a ocorrência -->
+                    <div class="wizard-step" id="ostep-1">
+                        <h3 class="wizard-step-title">Sobre quem é a ocorrência?</h3>
+                        <label>Nome ou Apartamento</label>
+                        <div style="position: relative;">
+                            <input type="text" id="ocorrencia-morador" placeholder="Digite para buscar..." autocomplete="off" oninput="window.buscarMoradorOcorrencia()" onkeydown="if(event.key==='Enter'){event.preventDefault(); window.ocorrenciaAvancar();}">
+                            <div id="ocorrencia-morador-sugestoes"></div>
+                        </div>
+                        <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.ocorrenciaAvancar()" style="width: 100%; margin-top: 6px;">PRÓXIMO</button>
+
+                        <div style="display:flex; align-items:center; gap:10px; margin:18px 0;">
+                            <div style="flex:1; height:1px; background:var(--border);"></div>
+                            <span style="font-size:.72rem; color:var(--secondary); text-transform:uppercase; letter-spacing:1px;">ou</span>
+                            <div style="flex:1; height:1px; background:var(--border);"></div>
+                        </div>
+
+                        <button class="btn btn-ocorrencia-outline" type="button" onclick="window.abrirAvisoInterno()" style="width:100%;">📋 AVISO INTERNO</button>
+                        <p style="font-size:.78rem; color:var(--secondary); margin-top:6px;">Use para avisos que não são sobre um morador específico — zelador, limpeza, portaria, subsíndica ou síndico.</p>
+
+                        <div id="ocorrencia-aviso-interno-box" class="hidden" style="margin-top:12px; padding:14px; border:1px solid var(--border); border-radius:9px; background:var(--surface);">
+                            <label>Categoria do Aviso</label>
+                            <select id="ocorrencia-aviso-categoria">
+                                <option value="">Selecione...</option>
+                                <option value="Zelador">🧹 Zelador</option>
+                                <option value="Limpeza">🧼 Limpeza</option>
+                                <option value="Porteiros">🚪 Porteiros</option>
+                                <option value="Subsíndica">🏢 Subsíndica</option>
+                                <option value="Síndico">👔 Síndico</option>
+                            </select>
+                            <label style="margin-top: 10px;">Observação (opcional)</label>
+                            <textarea id="ocorrencia-aviso-obs" rows="3" placeholder="Detalhe o aviso, se quiser..." style="width:100%; font-family:inherit; font-size:.95rem; padding:12px; resize:vertical;"></textarea>
+                            <div class="wizard-actions" style="margin-top:12px;">
+                                <button class="btn btn-ocorrencia-outline" type="button" onclick="window.fecharAvisoInterno()">CANCELAR</button>
+                                <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.confirmarAvisoInterno()">✔ CONFIRMAR AVISO</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Passo 2: unidade -->
+                    <div class="wizard-step hidden" id="ostep-2">
+                        <h3 class="wizard-step-title">Qual é a unidade?</h3>
+                        <div class="apto-grid">
+                            <input type="number" id="ocorrencia-apto-num" placeholder="Nº (Ex: 101)">
+                            <input type="text" id="ocorrencia-apto-letra" placeholder="Letra (Ex: A)" maxlength="2">
+                            <input type="text" id="ocorrencia-bloco" placeholder="Bloco (Ex: B)" maxlength="2">
+                        </div>
+                        <p style="font-size:.78rem; color:var(--secondary); margin-top:8px;">Pode deixar em branco se não se aplicar.</p>
+                        <div class="wizard-actions">
+                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(1)">VOLTAR</button>
+                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.wizardOcorrenciaIr(3)">PRÓXIMO</button>
+                        </div>
+                    </div>
+
+                    <!-- Passo 3: tipo -->
+                    <div class="wizard-step hidden" id="ostep-3">
+                        <h3 class="wizard-step-title">Que tipo de ocorrência?</h3>
+                        <input type="hidden" id="ocorrencia-tipo" value="">
+                        <div class="oc-chips"><button type="button" class="oc-chip" data-valor="Barulho" onclick="window.ocorrenciaEscolherTipo('Barulho')"><span>🔊</span>Barulho</button><button type="button" class="oc-chip" data-valor="Apartamento" onclick="window.ocorrenciaEscolherTipo('Apartamento')"><span>🏠</span>Apartamento</button><button type="button" class="oc-chip" data-valor="Sala de Jogos" onclick="window.ocorrenciaEscolherTipo('Sala de Jogos')"><span>🎮</span>Sala de jogos</button><button type="button" class="oc-chip" data-valor="Garagem" onclick="window.ocorrenciaEscolherTipo('Garagem')"><span>🚗</span>Garagem</button><button type="button" class="oc-chip" data-valor="Encomenda" onclick="window.ocorrenciaEscolherTipo('Encomenda')"><span>📦</span>Encomenda</button><button type="button" class="oc-chip" data-valor="Visitante" onclick="window.ocorrenciaEscolherTipo('Visitante')"><span>👤</span>Visitante</button><button type="button" class="oc-chip" data-valor="Outros" onclick="window.ocorrenciaEscolherTipo('Outros')"><span>⚠️</span>Outros</button></div>
+                        <div class="wizard-actions">
+                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(2)">VOLTAR</button>
+                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.wizardOcorrenciaIr(4)">PRÓXIMO</button>
+                        </div>
+                    </div>
+
+                    <!-- Passo 4: prioridade e status -->
+                    <div class="wizard-step hidden" id="ostep-4">
+                        <h3 class="wizard-step-title">Qual a prioridade?</h3>
+                        <label>Prioridade</label>
+                        <select id="ocorrencia-prioridade"><option value="normal">🟢 Normal</option><option value="atencao">🟡 Atenção</option><option value="urgente">🔴 Urgente</option></select>
+                        <label style="margin-top:10px;">Status</label>
+                        <select id="ocorrencia-status"><option value="aberta">🔴 Aberta</option><option value="andamento">🟡 Em andamento</option><option value="resolvida">🟢 Resolvida</option></select>
+                        <div class="wizard-actions" style="margin-top:14px;">
+                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(3)">VOLTAR</button>
+                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.wizardOcorrenciaIr(5)">PRÓXIMO</button>
+                        </div>
+                    </div>
+
+                    <!-- Passo 5: observação e foto -->
+                    <div class="wizard-step hidden" id="ostep-5">
+                        <h3 class="wizard-step-title">O que aconteceu?</h3>
+                        <label>Observação</label>
+                        <textarea id="ocorrencia-observacao" rows="4" placeholder="Descreva o ocorrido ou o lembrete para o próximo turno..." style="width:100%; font-family:inherit; font-size:.95rem; padding:12px; resize:vertical;"></textarea>
+
+                        <label style="margin-top: 10px;">Foto (opcional)</label>
+                        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                            <img id="ocorrencia-foto-preview" alt="Prévia da foto" style="display:none; width:64px; height:64px; object-fit:cover; border-radius:9px; border:1px solid var(--border);">
+                            <label class="btn btn-ocorrencia-outline" style="cursor:pointer; margin:0;">
+                                📷 TIRAR FOTO
+                                <input type="file" id="ocorrencia-foto-input" accept="image/*" capture="environment" style="display:none;" onchange="window.capturarFotoOcorrencia(event)">
+                            </label>
+                            <button type="button" id="ocorrencia-foto-remover" class="btn btn-ocorrencia-outline" style="display:none;" onclick="window.removerFotoOcorrencia()">REMOVER FOTO</button>
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button class="btn btn-ocorrencia-outline" type="button" onclick="window.wizardOcorrenciaIr(4)">VOLTAR</button>
+                            <button class="btn btn-ocorrencia wizard-next" type="button" onclick="window.registrarOcorrencia()">📌 REGISTRAR</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div id="oc-subview-lista" class="hidden">
+                <div class="card oc-card">
+                    <h2>🚨 Ocorrências</h2>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+                        <input id="busca-ocorrencias" type="search" placeholder="🔎 Buscar nome ou apartamento..." oninput="window.aplicarFiltrosOcorrencias()">
+                        <select id="filtro-periodo-ocorrencias" onchange="window.aplicarFiltrosOcorrencias()"><option value="todos">📅 Todos os períodos</option><option value="hoje">Hoje</option><option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option></select>
+                    </div>
+                    <div class="btn-row" style="margin-bottom: 14px;">
+                        <button id="filtro-ocorrencias-abertas" class="btn btn-ocorrencia" style="padding:8px 14px; font-size:.8rem;" onclick="window.filtrarOcorrencias('abertas')">ABERTAS</button>
+                        <button id="filtro-ocorrencias-todas" class="btn btn-ocorrencia-outline" style="padding:8px 14px; font-size:.8rem;" onclick="window.filtrarOcorrencias('todas')">TODAS</button>
+                    </div>
+                    <div id="lista-ocorrencias">
+                        <p style="color: var(--secondary);">Carregando...</p>
+                    </div>
+                </div>
+                </div>
+            </section>
             <!-- ABA: ADICIONAR MORADOR (OPERADOR) -->
             <section id="tab-adicionar-morador" class="hidden">
                 <div class="card" style="border-color: var(--success);">
@@ -975,7 +1269,7 @@ html, body {
 
                 <div class="card" style="border-color:var(--primary);">
                     <h3 style="margin-bottom:8px;">🎮 Depois do cadastro</h3>
-                    <p style="color:var(--secondary); margin-bottom:14px;">O morador fica disponível imediatamente para retirar jogos e chaves e consultar o histórico de uso.</p>
+                    <p style="color:var(--secondary); margin-bottom:14px;">O morador fica disponível imediatamente para a retirada de jogos, chave e para o registro de ocorrências.</p>
                     <button class="btn btn-primary" type="button" onclick="window.mudarAba('tab-jogos')" style="width:100%;">🎮 IR PARA SALA DE JOGOS</button>
                 </div>
             </section>
@@ -985,7 +1279,7 @@ html, body {
                     <h2>Cadastro Manual de Morador</h2>
                     <label>Nome Completo</label>
                     <input type="text" id="novo-morador-nome" placeholder="Ex: João da Silva">
-                    
+
                     <label style="margin-top: 10px;">Unidade</label>
                     <div class="apto-grid">
                         <input type="number" id="novo-morador-num" placeholder="Nº (Ex: 101)">
@@ -995,9 +1289,9 @@ html, body {
 
                     <label style="margin-top: 10px;">Telefone (WhatsApp)</label>
                     <input type="tel" id="novo-morador-telefone" placeholder="(11) 99999-9999" inputmode="numeric" autocomplete="tel" maxlength="15" oninput="window.formatarCelular(this)" onblur="window.validarCampoCelular(this)">
-                    
+
                     <button class="btn btn-primary" onclick="window.adicionarMorador()" style="margin-top: 10px;">Salvar Morador</button>
-                    
+
                     <hr style="margin: 30px 0; border: 0; border-top: 1px dashed var(--border);">
                     <h3>Importar Planilha em Massa</h3>
                     <p style="font-size: 0.9rem; color: var(--secondary); margin-bottom: 10px;">Formatos aceitos: TXT, CSV, XLS ou XLSX. Colunas reconhecidas: Nome, Nº Apto/Apartamento, Letra, Bloco e Telefone.</p>
@@ -1072,6 +1366,13 @@ html, body {
 
             <!-- ABA: ADMIN (ADMIN) -->
             <section id="tab-admin" class="hidden">
+<div class="card" id="admin-chaves"><h2>🔑 Administração de Outras Chaves</h2>
+ <p class="chave-muted">Uma chave por linha. Aqui você pode incluir, renomear ou remover chaves. A alteração não apaga o histórico de retiradas.</p>
+ <label>Catálogo de chaves</label><textarea id="admin-lista-chaves" rows="12" style="width:100%;padding:12px"></textarea>
+ <label>Funcionários cadastrados (um por linha)</label><textarea id="admin-lista-funcionarios" rows="6" style="width:100%;padding:12px" placeholder="Ex.: João — Portaria"></textarea>
+ <button class="btn btn-secondary" onclick="window.chaveSalvarCatalogos()">SALVAR CHAVES E FUNCIONÁRIOS</button>
+</div>
+
                 <div class="card">
                     <h2>MENSAGENS DO WHATSAPP</h2>
                     <p style="margin-bottom: 16px; color: var(--secondary);">Edite aqui o texto enviado ao morador em cada situação. Use os atalhos abaixo para inserir informações que mudam a cada envio.</p>
@@ -1119,7 +1420,7 @@ html, body {
                 <div class="card" style="border-color: var(--danger);">
                     <h2 style="color: var(--danger);">DANGER ZONE</h2>
                     <p style="margin-bottom: 20px; color: var(--secondary);">Área restrita a administradores. Cuidado com operações destrutivas.</p>
-                    
+
                     <button class="btn btn-success" onclick="window.exportarBackupJSON()" style="margin-right: 10px;">Baixar Backup do Banco (JSON)</button>
                     <button class="btn btn-danger" onclick="window.limparHistorico()">Apagar Banco de Dados (WIPE)</button>
                 </div>
@@ -1241,7 +1542,7 @@ html, body {
         window.fazerLogin = async function() {
             const userIn = document.getElementById('login-user').value.trim().toLowerCase();
             const passIn = document.getElementById('login-pass').value.trim();
-            
+
             // Administrador padrão Master fallback (hardcoded de segurança)
             if (userIn === 'admin' && passIn === 'admin1234') {
                 sessionStorage.setItem('salaJogos_user', JSON.stringify({ nome: 'Administrador Supremo', role: 'admin', usuario: 'admin' }));
@@ -1258,7 +1559,7 @@ html, body {
                 const q = query(collection(db, "usuarios"));
                 const querySnapshot = await getDocs(q);
                 let userObj = null;
-                
+
                 querySnapshot.forEach(doc => {
                     const u = doc.data();
                     if(u.usuario === userIn && u.senha === passIn) {
@@ -1326,16 +1627,17 @@ html, body {
             carregarMensagens();
             carregarCatalogoRealtime();
             carregarEmprestimosRealtime();
-
+            carregarOcorrenciasRealtime();
             carregarPrestadoresRealtime();
             carregarUsuariosRealtime();
+            chaveIniciarRealtime();
         };
 
         // MENSAGENS DO WHATSAPP (editáveis pelo admin)
         const MENSAGENS_PADRAO = {
             retirada: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*!\n\nConfirmamos a retirada da chave e do(s) jogo(s): *{jogo}*.\n\nA retirada foi registrada em {data} para a unidade {apartamento}.\n\n⚠️ *Responsabilidade:* você fica responsável pela chave e pelos equipamentos durante o período de uso.\n\nDesejamos um ótimo jogo! Divirta-se! 🕹️`,
             chave: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*!\n\nConfirmamos a retirada da chave da sala de jogos.\n\nA retirada foi registrada em {data} para a unidade {apartamento}.\n\n⚠️ *Responsabilidade:* você fica responsável pela chave durante o período de uso.\n\nAté já! 🔑`,
-            autorizacao: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*! Tudo bem?\n\nA criança *{crianca}* está na portaria para retirar: *{jogo}*, da unidade *{apartamento}*.\n\nComo precisamos da autorização de um responsável, poderia, por gentileza, confirmar se permite a retirada e se responsabiliza pela chave e pelos equipamentos durante o uso?\n\nPara autorizar, responda *SIM*. Caso não autorize, responda *NÃO*, por favor.\n\nAgradecemos sua atenção e colaboração! 🕹️`,
+            autorizacao: `🎱 *PORTAL PLAY*\n\nOlá, *{morador}*!\n\n*{crianca}* está na portaria para retirar o(s) jogo(s): *{jogo}*. Como se trata de uma pessoa menor de idade, precisamos confirmar se você se responsabiliza pela retirada, pela chave e pelos equipamentos durante o período de uso.\n\n⚠️ Por favor, responda *SIM* para autorizar e se responsabilizar, ou *NÃO* caso não autorize.\n\nAguardamos sua confirmação. 🕹️`,
             devolucao: `🎱 Olá! Confirmamos a devolução da chave e do jogo *{jogo}*. O condomínio agradece. Até a próxima!`
         };
 
@@ -2156,13 +2458,13 @@ html, body {
 
             moradoresLista.push({ id: Date.now().toString(), nome, aptoNum: num, aptoLetra: letra, bloco: bloco, telefone: tel });
             await setDoc(doc(db, 'moradores', 'lista'), { array: moradoresLista });
-            
+
             document.getElementById('novo-morador-nome').value = '';
             document.getElementById('novo-morador-num').value = '';
             document.getElementById('novo-morador-letra').value = '';
             document.getElementById('novo-morador-bloco').value = '';
             document.getElementById('novo-morador-telefone').value = '';
-            
+
             renderizarMoradores();
             window.mostrarBanner('MORADOR REGISTRADO', 'success');
         };
@@ -2309,7 +2611,7 @@ html, body {
                     window.mostrarBanner('Preencha o apartamento e o telefone.', 'danger');
                     return;
                 }
-                
+
                 // Validação estrita: somente celular brasileiro com 11 dígitos.
                 if (!window.validarCelular(telefone)) {
                     window.mostrarBanner('Celular inválido! Use o padrão (11) 99999-9999.', 'danger');
@@ -2335,21 +2637,21 @@ html, body {
                 const aptoMatch = termoNormalizado.length >= 2 && aptoFull.includes(termoNormalizado);
                 return nomeMatch || aptoMatch;
             }).slice(0, 5);
-            
+
             matches.forEach(m => {
                 const divItem = document.createElement('div');
                 divItem.className = 'sugestao-item';
                 const exibeApto = formatarAptoDisplay(m.aptoNum, m.aptoLetra, m.bloco, m.apartamento);
                 divItem.innerHTML = `<strong>${m.nome}</strong> <span style="font-size:0.8rem; color:var(--primary); margin-left:10px;">[${exibeApto}]</span>`;
-                
+
                 divItem.onclick = () => {
                     document.getElementById('retirada-morador').value = m.nome;
-                    
+
                     // Preencher o celular do cadastro, mantendo o campo editável
                     const campoTelefone = document.getElementById('retirada-telefone');
                     campoTelefone.value = m.telefone || '';
                     window.formatarCelular(campoTelefone);
-                    
+
                     if (m.aptoNum) {
                         document.getElementById('retirada-apto-num').value = m.aptoNum;
                         document.getElementById('retirada-apto-letra').value = m.aptoLetra || '';
@@ -2371,7 +2673,7 @@ html, body {
                 catalogoJogos = [];
                 snapshot.forEach(doc => catalogoJogos.push({ id: doc.id, ...doc.data() }));
                 renderizarCatalogo();
-                
+
                 const divJogos = document.getElementById('retirada-jogos-lista');
                 divJogos.innerHTML = '';
                 if(catalogoJogos.length === 0) {
@@ -2629,7 +2931,7 @@ html, body {
             }
         };
 
-        // Mesmo problema do histórico de empréstimos: baixar TODAS as jogos
+        // Mesmo problema do histórico de empréstimos: baixar TODAS as ocorrências
         // já registradas a cada login fica mais lento com o tempo. Agora mantemos
         // sempre as não resolvidas (poucas) + as últimas registradas, e a exclusão
         // manual continua funcionando normalmente pois ela apaga direto no banco.
@@ -2979,9 +3281,9 @@ html, body {
                     dataDevolucaoPrevista: null,
                     status: dataDevolucaoPrevistaValor ? 'devolvido' : 'retirado'
                 });
-                
+
                 window.mostrarBanner('RETIRADA CONFIRMADA!', 'success');
-                
+
                 // Limpar Form
                 document.querySelectorAll('input[name="jogo-selecionado"]').forEach(c => c.checked = false);
                 document.getElementById('retirada-apenas-chave').checked = false;
@@ -2991,7 +3293,7 @@ html, body {
                 document.getElementById('retirada-apto-letra').value = '';
                 document.getElementById('retirada-bloco').value = '';
                 document.getElementById('retirada-telefone').value = '';
-                
+
                 window.wizardReset();
 
                 // Enviar WhatsApp
@@ -3143,7 +3445,7 @@ html, body {
                 historicoParaExportar = snap.docs.map(d => ({ id: d.id, ...d.data() }));
             } catch (e) { console.error(e); }
             const dadosExport = historicoParaExportar.map(h => ({
-                Jogo: h.jogoNome, Morador: h.moradorNome, 
+                Jogo: h.jogoNome, Morador: h.moradorNome,
                 Apartamento: formatarAptoDisplay(h.aptoNum, h.aptoLetra, h.bloco, h.apartamento),
                 Status: h.status.toUpperCase(),
                 Retirada: formatarData(h.dataRetirada), Devolucao: h.dataDevolucao ? formatarData(h.dataDevolucao) : ''
@@ -3226,25 +3528,25 @@ html, body {
             reader.onload = async e => {
                 try {
                     let rows = [];
-                    
+
                     if (ext === 'txt' || ext === 'csv') {
                         // Tratar como CSV separado por vírgula ou ponto-e-vírgula
                         const rawText = new TextDecoder("utf-8").decode(new Uint8Array(e.target.result));
-                        
+
                         // Detectar separador mais provável
                         const countComma = (rawText.match(/,/g) || []).length;
                         const countSemicolon = (rawText.match(/;/g) || []).length;
                         const countTab = (rawText.match(/\t/g) || []).length;
-                        
+
                         let separator = ',';
                         if (countSemicolon > countComma && countSemicolon > countTab) separator = ';';
                         else if (countTab > countComma && countTab > countSemicolon) separator = '\t';
-                        
+
                         // Parse simple CSV/TXT line by line
                         const lines = rawText.split('\n').filter(line => line.trim().length > 0);
                         if(lines.length > 0) {
                             const headers = lines[0].split(separator).map(h => h.trim().replace(/^["']|["']$/g, ''));
-                            
+
                             for(let i = 1; i < lines.length; i++) {
                                 const values = lines[i].split(separator).map(v => v.trim().replace(/^["']|["']$/g, ''));
                                 let rowObj = {};
@@ -3262,7 +3564,7 @@ html, body {
                         if (!wb.SheetNames?.length) throw new Error('A planilha não possui nenhuma aba.');
                         rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {defval:'', raw:false});
                     }
-                    
+
                     if (!rows.length) throw new Error('A primeira aba da planilha (ou arquivo texto) está vazia.');
 
                     let importados=0, semApto=0, ignorados=0;
@@ -3280,45 +3582,45 @@ html, body {
                         const blocoV=valorColuna(row,['Bloco','Bloco Apto']);
                         const telV=valorColuna(row,['Telefone','Celular','WhatsApp','Whatsapp','Fone','Contato']);
                         const matV=valorColuna(row,['Matricula','Matrícula','ID','Codigo','Código']);
-                        
+
                         const u=unidade(unidadeV);
                         let aptoNum=texto(numeroV!==undefined?numeroV:u.aptoNum);
                         let aptoLetra=texto(letraV!==undefined?letraV:u.aptoLetra).toUpperCase();
                         let bloco=texto(blocoV!==undefined?blocoV:u.bloco).toUpperCase();
-                        
+
                         if (unidadeV===undefined && numeroV===undefined && keys.length>=4) {
                             aptoNum=aptoNum||texto(row[keys[1]]); aptoLetra=aptoLetra||texto(row[keys[2]]).toUpperCase(); bloco=bloco||texto(row[keys[3]]).toUpperCase();
                         }
-                        
+
                         const telefone=num(telV!==undefined?telV:(keys[4]?row[keys[4]]:''));
                         const matricula=texto(matV!==undefined?matV:'');
-                        
+
                         // Verifica se o morador já existe (por nome, ignorando maiúsculas e espaços extras)
                         const jaExiste = listaTemporaria.some(m => m.nome.toLowerCase() === nome.toLowerCase());
-                        
+
                         if (!jaExiste) {
                             listaTemporaria.push({id:Date.now().toString()+Math.random().toString(36).slice(2,8),nome,aptoNum,aptoLetra,bloco,telefone,matricula});
-                            importados++; 
+                            importados++;
                             if(!aptoNum&&!bloco) semApto++;
                         } else {
                             ignorados++;
                         }
                     }
-                    
+
                     if (!importados && !ignorados) throw new Error('Nenhum morador válido foi encontrado. Confira os cabeçalhos da planilha.');
-                    
+
                     if (importados > 0) {
                         moradoresLista = listaTemporaria;
                         await setDoc(doc(db,'moradores','lista'),{array:moradoresLista});
                         renderizarMoradores();
-                        
+
                         let msg=`DADOS ATUALIZADOS: ${importados} moradores novos inseridos.`;
                         if(semApto) msg+=` (${semApto} sem apartamento/bloco).`;
-                        window.mostrarBanner(msg,'success'); 
+                        window.mostrarBanner(msg,'success');
                     } else {
                         window.mostrarBanner("Nenhum morador novo inserido (já cadastrados ou linhas vazias).", "info");
                     }
-                    
+
                     input.value='';
                 } catch(err) {
                     console.error('Erro ao importar planilha:',err);
@@ -3332,7 +3634,7 @@ html, body {
         };
 
         // ADMIN
-        
+
         window.deletarRegistroHistorico = async function(id) {
             if(!confirm('WIPE: Apagar este registro permanentemente do histórico?')) return;
             try {
@@ -3368,12 +3670,12 @@ html, body {
             const a = document.createElement('a'); a.href = dataStr; a.download = `backup_sistema_${Date.now()}.json`; a.click();
         };
 
-        
+
         // ======= GERENCIAMENTO DE USUÁRIOS (FIREBASE) =======
         function carregarUsuariosRealtime() {
             if (pararUsuariosRealtime) pararUsuariosRealtime();
             if (currentUser?.role !== 'admin') return; // Operador não precisa carregar isso
-            
+
             pararUsuariosRealtime = onSnapshot(query(collection(db, "usuarios")), (snapshot) => {
                 usuariosLista = [];
                 snapshot.forEach(doc => usuariosLista.push({ id: doc.id, ...doc.data() }));
@@ -3385,7 +3687,7 @@ html, body {
             const tbody = document.getElementById('tabela-usuarios');
             if(!tbody) return;
             tbody.innerHTML = `<tr><td style="font-weight:bold; color:var(--primary);">Administrador Supremo</td><td>admin</td><td><span class="role-badge">ADMIN</span></td><td class="admin-only">-</td></tr>`;
-            
+
             usuariosLista.forEach(u => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -3403,12 +3705,12 @@ html, body {
             const nome = document.getElementById('novo-usuario-nome').value.trim();
             const usuario = document.getElementById('novo-usuario-login').value.trim().toLowerCase();
             const senha = document.getElementById('novo-usuario-senha').value.trim();
-            
-            if (!nome || !usuario || !senha) { 
-                window.mostrarBanner('Preencha Nome, Login e Senha.', 'danger'); 
-                return; 
+
+            if (!nome || !usuario || !senha) {
+                window.mostrarBanner('Preencha Nome, Login e Senha.', 'danger');
+                return;
             }
-            
+
             try {
                 await addDoc(collection(db, "usuarios"), { nome, usuario, senha, role: 'operador' });
                 document.getElementById('novo-usuario-nome').value = '';
@@ -3431,7 +3733,98 @@ html, body {
             }
         };
 
-        
+
+
+
+// ===== OUTRAS CHAVES: catálogo, retiradas e histórico separados de jogos =====
+const CHAVES_INICIAIS = ["Banheiro S. Festas","Bicicletário","Casa das Bombas","C. Medição A","C. Medição B","C. Medição C","C. Medição D","Caixa Correspondencia","Depósito BC","Depósito CC","Depósito da Manutenção","DG","Portão de Passagem","Portão do Muro","Portão Reciclagem","Portão Tapume","Reservatório bomba C","Salão de festas","Torre de força","Vestiário"];
+let chaveCatalogo = [...CHAVES_INICIAIS], chaveFuncionarios = [], chaveMoradorSelecionado = null;
+let chaveRegistros = [], chaveUnsubConfig=null, chaveUnsubRegistros=null;
+const chaveEsc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const chaveData = v => v ? formatarData(v) : '—';
+const chaveNomeItem = item => String(item || '').trim();
+function chaveCatalogosRender() {
+ const sel=document.getElementById('chave-item-select'); const antigo=sel.value;
+ const ativas=new Set(chaveRegistros.filter(r=>r.status==='retirado').map(r=>r.chave));
+ sel.replaceChildren();
+ for(const nome of chaveCatalogo){const o=document.createElement('option');o.value=nome;o.textContent=nome+(ativas.has(nome)?' — EM USO':'');o.disabled=ativas.has(nome);sel.appendChild(o);}
+ if([...sel.options].some(o=>o.value===antigo&&!o.disabled))sel.value=antigo;
+ else sel.selectedIndex=[...sel.options].findIndex(o=>!o.disabled);
+ const fun=document.getElementById('chave-funcionario');const anterior=fun.value;fun.replaceChildren();
+ for(const [valor,texto] of [['','Selecione o funcionário...'],...chaveFuncionarios.map(f=>[f,f]),['__outro','+ Outro funcionário (digitar nome)']]) {
+  const o=document.createElement('option');o.value=valor;o.textContent=texto;fun.appendChild(o);
+ }
+ if([...fun.options].some(o=>o.value===anterior))fun.value=anterior;
+ window.chaveTrocarFuncionario();
+ const a=document.getElementById('admin-lista-chaves'), b=document.getElementById('admin-lista-funcionarios');
+ if(document.activeElement!==a)a.value=chaveCatalogo.join('\n');
+ if(document.activeElement!==b)b.value=chaveFuncionarios.join('\n');
+}
+window.chaveTrocarTipo=()=>{const fun=document.getElementById('chave-tipo').value==='funcionario';document.getElementById('chave-bloco-funcionario').classList.toggle('hidden',!fun);document.getElementById('chave-bloco-morador').classList.toggle('hidden',fun);};
+window.chaveTrocarFuncionario=()=>document.getElementById('chave-outro-funcionario').classList.toggle('hidden',document.getElementById('chave-funcionario').value!=='__outro');
+window.chaveBuscarMorador=()=>{
+ chaveMoradorSelecionado=null;document.getElementById('chave-morador-selecionado').textContent='Selecione o morador da lista.';
+ const termo=document.getElementById('chave-morador-busca').value.trim().toLocaleLowerCase('pt-BR');
+ const div=document.getElementById('chave-morador-sugestoes');div.replaceChildren();if(termo.length<2)return;
+ const matches=moradoresLista.filter(m=>`${m.nome||''} ${m.aptoNum||''}${m.aptoLetra||''} ${m.bloco||''} ${m.apartamento||''}`.toLocaleLowerCase('pt-BR').includes(termo)).slice(0,12);
+ for(const m of matches){const bt=document.createElement('button');bt.type='button';bt.className='btn btn-secondary';bt.textContent=`${m.nome} — ${formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento)}`;
+ bt.onclick=()=>{chaveMoradorSelecionado=m;document.getElementById('chave-morador-busca').value=m.nome;document.getElementById('chave-morador-selecionado').textContent=`Selecionado: ${m.nome} — ${formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento)}`;div.replaceChildren();};div.appendChild(bt);}
+};
+function chaveRenderRegistros(){
+ chaveCatalogosRender();
+ const ativos=chaveRegistros.filter(r=>r.status==='retirado').sort((a,b)=>new Date(b.dataRetirada?.toDate?.()||b.dataRetirada||0)-new Date(a.dataRetirada?.toDate?.()||a.dataRetirada||0));
+ const hist=chaveRegistros.filter(r=>r.status==='devolvido').sort((a,b)=>new Date(b.dataDevolucao?.toDate?.()||b.dataDevolucao||0)-new Date(a.dataDevolucao?.toDate?.()||a.dataDevolucao||0));
+ const display=(r,ativo)=>{const el=document.createElement('div');el.className='chave-item';
+ const titulo=document.createElement('strong');titulo.textContent='🔑 '+r.chave;el.appendChild(titulo);
+ const p=document.createElement('p');p.textContent=`${r.tipo==='morador'?'Morador':'Funcionário'}: ${r.nome} ${r.apartamento?'· Apto '+r.apartamento:''}`;el.appendChild(p);
+ const tempo=document.createElement('p');tempo.className='chave-muted';tempo.textContent=`Retirada: ${chaveData(r.dataRetirada)}${ativo?'':' · Devolvida: '+chaveData(r.dataDevolucao)}`;el.appendChild(tempo);
+ if(r.observacao){const ob=document.createElement('p');ob.textContent='Observação: '+r.observacao;el.appendChild(ob);}
+ if(r.recebidoPor){const rec=document.createElement('p');rec.textContent='Recebida por: '+r.recebidoPor;el.appendChild(rec);}
+ if(ativo){const bt=document.createElement('button');bt.className='btn btn-chave';bt.textContent='📥 REGISTRAR DEVOLUÇÃO';bt.onclick=()=>window.chaveDevolver(r.id);el.appendChild(bt);}
+ return el;};
+ for(const [id,arr,ativo,empty] of [['chave-ativas',ativos,true,'Nenhuma chave em uso.'],['chave-historico',hist,false,'Ainda não há devoluções.']]){const d=document.getElementById(id);d.replaceChildren();if(!arr.length)d.textContent=empty;else for(const r of arr.slice(0,150))d.appendChild(display(r,ativo));}
+}
+window.chaveRegistrar=async()=>{
+ const tipo=document.getElementById('chave-tipo').value,chave=document.getElementById('chave-item-select').value;
+ if(!chave){window.mostrarBanner('Selecione uma chave disponível.','danger');return;}
+ let nome='',apartamento='',telefone='';
+ if(tipo==='morador'){
+  const m=chaveMoradorSelecionado;if(!m){window.mostrarBanner('Selecione um morador cadastrado.','danger');return;}
+  nome=m.nome;apartamento=formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento);telefone=m.telefone||'';
+ }else{const v=document.getElementById('chave-funcionario').value;nome=v==='__outro'?document.getElementById('chave-funcionario-outro').value.trim():v;if(!nome){window.mostrarBanner('Selecione ou digite o funcionário.','danger');return;}}
+ if(chaveRegistros.some(r=>r.chave===chave&&r.status==='retirado')){window.mostrarBanner('Esta chave já consta em uso.','danger');return;}
+ const btn=document.querySelector('#tab-outras-chaves .btn-chave');btn.disabled=true;
+ try{await addDoc(collection(db,'outrasChavesRetiradas'),{chave,tipo,nome,apartamento,telefone,moradorId:tipo==='morador'?(chaveMoradorSelecionado.id||null):null,observacao:document.getElementById('chave-observacao').value.trim(),status:'retirado',dataRetirada:new Date(),registradoPor:currentUser?.nome||''});
+  document.getElementById('chave-observacao').value='';window.mostrarBanner('RETIRADA REGISTRADA','success');
+  if(tipo==='morador'&&telefone&&confirm('Retirada registrada. Abrir WhatsApp do morador com a confirmação?')){
+   const numero=telefone.replace(/\D/g,'');const msg=`Portal Play: Confirmamos a retirada da chave ${chave} por ${nome} (${apartamento}) em ${new Date().toLocaleString('pt-BR')}.`;
+   window.open(`https://wa.me/55${numero}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+  }
+ }catch(e){console.error(e);window.mostrarBanner('Erro ao registrar. Verifique permissão do Firestore.','danger');}finally{btn.disabled=false;}
+};
+window.chaveDevolver=async id=>{
+ const r=chaveRegistros.find(x=>x.id===id);if(!r)return;
+ const padrao=currentUser?.nome||'';const responsavel=prompt(`Quem recebeu a devolução da chave "${r.chave}"?`,padrao);
+ if(responsavel===null)return;if(!responsavel.trim()){window.mostrarBanner('Informe quem recebeu a chave.','danger');return;}
+ if(!confirm(`Confirmar devolução de "${r.chave}" por ${r.nome}?`))return;
+ try{await updateDoc(doc(db,'outrasChavesRetiradas',id),{status:'devolvido',dataDevolucao:new Date(),recebidoPor:responsavel.trim()});window.mostrarBanner('DEVOLUÇÃO REGISTRADA','success');}
+ catch(e){console.error(e);window.mostrarBanner('Falha ao registrar devolução.','danger');}
+};
+window.chaveSalvarCatalogos=async()=>{
+ if(currentUser?.role!=='admin'){window.mostrarBanner('Somente administrador pode editar.','danger');return;}
+ const nomes=id=>[...new Set(document.getElementById(id).value.split(/\r?\n/).map(chaveNomeItem).filter(Boolean))];
+ const chaves=nomes('admin-lista-chaves'),funcionarios=nomes('admin-lista-funcionarios');
+ if(!chaves.length){window.mostrarBanner('Cadastre ao menos uma chave.','danger');return;}
+ try{await setDoc(doc(db,'configuracoes','outrasChaves'),{chaves,funcionarios,alteradoEm:new Date(),alteradoPor:currentUser?.nome||''});window.mostrarBanner('CATÁLOGOS SALVOS','success');}
+ catch(e){console.error(e);window.mostrarBanner('Falha ao salvar. Verifique o Firestore.','danger');}
+};
+function chaveIniciarRealtime(){
+ if(chaveUnsubConfig)chaveUnsubConfig();if(chaveUnsubRegistros)chaveUnsubRegistros();
+ chaveUnsubConfig=onSnapshot(doc(db,'configuracoes','outrasChaves'),snap=>{
+  const d=snap.exists()?snap.data():{};chaveCatalogo=Array.isArray(d.chaves)?d.chaves:CHAVES_INICIAIS;chaveFuncionarios=Array.isArray(d.funcionarios)?d.funcionarios:[];chaveCatalogosRender();
+ },e=>{console.error(e);window.mostrarBanner('Sem acesso à configuração de chaves.','danger');chaveCatalogosRender();});
+ chaveUnsubRegistros=onSnapshot(collection(db,'outrasChavesRetiradas'),snap=>{chaveRegistros=snap.docs.map(d=>({id:d.id,...d.data()}));chaveRenderRegistros();},e=>{console.error(e);document.getElementById('chave-ativas').textContent='Não foi possível carregar. Verifique as regras do Firestore.';});
+}
 
         window.onload = () => {
             // A sessão de login é temporária: fechar o app/aba encerra o acesso.

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portal-play-shell-v2-icon-key';
+const CACHE_NAME = 'portal-play-shell-v3-other-keys';
 const APP_SHELL = [
   './',
   './index.html',
