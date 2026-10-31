@@ -13,7 +13,7 @@
     <!-- SheetJS é carregado sob demanda (ver carregarSheetJS) apenas ao exportar/importar planilha -->
     <!-- Google Fonts para visual Gamer -->
     <!-- Fonte externa removida para acelerar a primeira abertura -->
-
+    
 <style>
         :root {
             --bg-base: #1E1A17; /* Madeira bem escura / Carvão */
@@ -26,70 +26,70 @@
             --success: #5D803E; /* Verde grama / Feltro de bilhar */
             --danger: #A64238; /* Vermelho tijolo aparente */
             --shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-
+            
             --font-title: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
         }
-
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-base); color: var(--text); font-family: var(--font-body); font-size: 1.1rem; }
-
+        
         /* Utilidades */
         .hidden { display: none !important; }
-
-        .btn {
-            padding: 10px 20px;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 700;
+        
+        .btn { 
+            padding: 10px 20px; 
+            border: 2px solid transparent; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: 700; 
             font-family: var(--font-title);
             font-size: 0.9rem;
             text-transform: uppercase;
-            transition: all 0.3s ease;
-            color: var(--bg-base);
+            transition: all 0.3s ease; 
+            color: var(--bg-base); 
         }
-
-        .btn-primary {
-            background-color: var(--primary);
+        
+        .btn-primary { 
+            background-color: var(--primary); 
             border-color: var(--primary);
         }
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
+        .btn-primary:hover { 
+            background-color: var(--primary-hover); 
             border-color: var(--primary-hover);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow); 
         }
-
-        .btn-danger {
-            background-color: transparent;
+        
+        .btn-danger { 
+            background-color: transparent; 
             color: var(--danger);
             border-color: var(--danger);
         }
-        .btn-danger:hover {
+        .btn-danger:hover { 
             background-color: var(--danger);
             color: white;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow); 
         }
 
-        .btn-success {
-            background-color: transparent;
+        .btn-success { 
+            background-color: transparent; 
             color: var(--success);
             border-color: var(--success);
         }
-        .btn-success:hover {
+        .btn-success:hover { 
             background-color: var(--success);
             color: var(--bg-base);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow); 
         }
-
-        input, select {
-            padding: 12px;
+        
+        input, select { 
+            padding: 12px; 
             background-color: #1A1512;
-            border: 1px solid var(--primary);
+            border: 1px solid var(--primary); 
             color: var(--primary-hover);
-            border-radius: 4px;
-            width: 100%;
-            margin-bottom: 12px;
+            border-radius: 4px; 
+            width: 100%; 
+            margin-bottom: 12px; 
             font-family: var(--font-body);
             font-size: 1.1rem;
             font-weight: 600;
@@ -99,7 +99,7 @@
             box-shadow: var(--shadow);
         }
         input::placeholder { color: #4F637A; }
-
+        
         label {
             display: block;
             margin-bottom: 6px;
@@ -109,48 +109,48 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
         }
-
+        
         /* Telas */
         #login-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: linear-gradient(135deg, #2D2520 0%, #1E1A17 100%); }
         .login-box { background: rgba(45, 37, 32, 0.9); padding: 40px; border-radius: 8px; border: 1px solid var(--primary); box-shadow: var(--shadow); width: 100%; max-width: 400px; text-align: center; backdrop-filter: blur(10px); }
         .login-box h1 { margin-bottom: 30px; color: var(--primary-hover); font-family: var(--font-title); font-size: 1.8rem;  }
-
+        
         #app-screen { display: flex; flex-direction: column; min-height: 100vh; }
         header { background: var(--surface); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); }
         header h2 { font-family: var(--font-title); color: var(--primary-hover); margin: 0; font-size: 1.5rem;  }
         .user-info { display: flex; align-items: center; gap: 16px; }
         .role-badge { background: var(--primary); color: var(--bg-base); padding: 4px 8px; border-radius: 4px; font-weight: bold; font-family: var(--font-title); font-size: 0.7rem; letter-spacing: 1px;}
-
+        
         nav { background: var(--surface); padding: 0 24px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid var(--border); }
         nav button { background: none; border: none; padding: 16px 12px; color: var(--secondary); font-weight: 700; font-family: var(--font-title); font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color 0.2s; }
         nav button:hover { color: var(--primary-hover); }
         nav button.active { color: var(--primary-hover); border-bottom-color: var(--primary-hover);  }
         #nav-ocorrencias { color: var(--pop); }
         #nav-ocorrencias.active { color: var(--pop); border-bottom-color: var(--pop); }
-
+        
         main { padding: 24px; max-width: 1200px; margin: 0 auto; width: 100%; flex: 1; }
-
+        
         /* Componentes */
         .card { background: var(--surface); padding: 30px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.3); margin-bottom: 24px; position: relative; overflow: hidden; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--primary), transparent); }
-
+        
         h2 { margin-bottom: 20px; font-size: 1.5rem; font-family: var(--font-title); color: var(--text); }
-
+        
         table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 1rem; }
         th, td { padding: 14px; text-align: left; border-bottom: 1px solid var(--border); }
         th { font-weight: 700; color: var(--primary); font-family: var(--font-title); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
         tr:hover td { background-color: rgba(69, 162, 158, 0.05); }
-
+        
         #banner-status { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 4px; font-family: var(--font-title); font-weight: bold; font-size: 0.9rem; z-index: 1000; transition: opacity 0.3s, transform 0.3s; opacity: 0; transform: translateY(-20px); pointer-events: none; border: 1px solid; }
         #banner-status.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
         .bg-success { background-color: rgba(0, 230, 118, 0.1); color: var(--success); border-color: var(--success);  backdrop-filter: blur(5px);}
         .bg-danger { background-color: rgba(255, 23, 68, 0.1); color: var(--danger); border-color: var(--danger);  backdrop-filter: blur(5px);}
         .bg-info { background-color: rgba(102, 252, 241, 0.1); color: var(--primary-hover); border-color: var(--primary); box-shadow: var(--shadow); backdrop-filter: blur(5px);}
-
+        
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .apto-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) { 
+            .form-grid { grid-template-columns: 1fr; } 
         }
 
         /* Checkbox customizado estilo gamer */
@@ -721,26 +721,6 @@ html, body {
 .hist-acoes .btn { width:100%; padding:10px 14px; font-size:.85rem; }
 @media (min-width: 700px) { .hist-acoes { flex-direction:row; } .hist-acoes .btn { width:auto; } }
 
-        /* Histórico mais claro e fácil de usar */
-        .historico-cabecalho { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; flex-wrap:wrap; }
-        .historico-cabecalho .btn { min-height:42px; }
-        .historico-resumo { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 16px; }
-        .historico-resumo span { display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border-radius:10px; background:#f1ecff; color:#4b2bb0; border:1px solid #d9caff; font-size:.82rem; font-weight:800; }
-        .hist-card { box-shadow:0 2px 0 rgba(36,24,84,.04); transition:transform .15s, box-shadow .15s; }
-        .hist-card:hover { transform:translateY(-1px); box-shadow:0 5px 14px rgba(108,60,233,.09); }
-        .hist-acoes { display:flex; flex-wrap:wrap; flex-direction:row; gap:8px; margin-top:14px; }
-        .hist-acoes .btn { flex:1 1 145px; width:auto; min-height:40px; padding:9px 12px; }
-        .hist-linha { gap:8px; flex-wrap:wrap; }
-        .hist-linha span { flex-basis:68px; }
-        .hist-lapis { flex:0 0 34px !important; width:34px !important; padding:2px 6px !important; }
-        @media (max-width:600px) {
-            .historico-cabecalho { flex-direction:column; }
-            .historico-cabecalho .btn { width:100%; }
-            .hist-acoes { flex-direction:column; }
-            .hist-acoes .btn { flex:1 1 auto; width:100%; }
-            .hist-topo { flex-direction:column; }
-        }
-
 /* Identidade das novas áreas */
 #nav-outras-chaves {color:#1554a2} #nav-outras-chaves.active {color:#12478b;border-bottom-color:#2469c9}
 #tab-outras-chaves .btn-chave {background:#2167c8;border:2px solid #2167c8;color:white;box-shadow:0 4px 0 #164786}
@@ -805,7 +785,7 @@ html, body {
         </nav>
 
         <main>
-
+            
 <section id="tab-outras-chaves" class="hidden">
  <div class="card"><h2>🔑 Outras Chaves</h2><p class="chave-muted">Registre a retirada de chaves de moradores e funcionários. As chaves em uso ficam listadas abaixo.</p>
   <div class="chave-field"><label>Quem vai retirar?</label><select id="chave-tipo" onchange="window.chaveTrocarTipo()"><option value="morador">Morador</option><option value="funcionario">Funcionário / uso interno</option></select></div>
@@ -826,8 +806,7 @@ html, body {
             <!-- ABA: EMPRÉSTIMOS ATUAIS (VISÃO CLEAN) -->
             <section id="tab-jogos">
                 <div style="display:flex; gap:8px; margin-bottom: 18px;">
-                    <button id="subnav-jogos-emuso" class="btn btn-primary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('emuso')">RETIRADA NORMAL / EM USO</button>
-                    <button id="subnav-jogos-crianca" class="btn btn-secondary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('crianca')">👧 RETIRADA POR CRIANÇA</button>
+                    <button id="subnav-jogos-emuso" class="btn btn-primary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('emuso')">EM USO</button>
                     <button id="subnav-jogos-historico" class="btn btn-secondary" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaJogos('historico')">HISTÓRICO</button>
                 </div>
 
@@ -919,7 +898,7 @@ html, body {
                             </div>
                         </div>
 
-
+                        
 
                         <div class="wizard-actions">
                             <button class="btn btn-danger" type="button" onclick="window.wizardIr(2)">VOLTAR</button>
@@ -929,7 +908,7 @@ html, body {
                 </div>
 
                 <!-- Painel de Jogos em Uso -->
-                <div class="card" id="painel-jogos-em-uso">
+                <div class="card">
                     <h2>Jogos em Uso <span style="font-size: 0.9rem; color: var(--danger); font-family: var(--font-body); font-weight: bold;">(Não Devolvidos)</span></h2>
                     <div style="overflow-x: auto;">
                         <table>
@@ -948,16 +927,8 @@ html, body {
 
                 <div id="jogos-subview-historico" class="hidden">
                 <div class="card">
-                    <div class="historico-cabecalho">
-                        <div>
-                            <h2 style="margin-bottom:6px;">Histórico de jogos</h2>
-                            <p style="color:var(--secondary);font-size:.9rem;margin-bottom:16px;">Consulte retiradas, devoluções e registros em aberto.</p>
-                        </div>
-                        <button class="btn btn-success admin-only" onclick="window.exportarExcel()">📊 Exportar Excel</button>
-                    </div>
-                    <label for="busca-historico">Buscar no histórico</label>
-                    <input id="busca-historico" type="search" placeholder="Nome, apartamento, jogo ou status..." oninput="window.filtrarHistorico()" style="margin-bottom:16px;">
-                    <div id="historico-resumo" class="historico-resumo"></div>
+                    <h2>Histórico Geral</h2>
+                    <button class="btn btn-success admin-only" onclick="window.exportarExcel()" style="margin-bottom: 20px;">Exportar para Excel</button>
                     <div id="tabela-historico" class="hist-lista"><p style="color:var(--secondary);">Carregando...</p></div>
                 </div>
                 </div>
@@ -965,13 +936,11 @@ html, body {
 
 
 
-
-
             <!-- ABA: PRESTADOR DE SERVIÇO -->
             <section id="tab-prestadores" class="hidden">
                 <div class="card wizard-card" style="border-color:#6C3CE9;">
                     <h2 style="color:#6C3CE9;">🛠️ Registrar Prestador de Serviço</h2>
-                    <p style="color:var(--secondary); margin-bottom:18px;">Preencha em etapas. Os botões desta aba são verdes para diferenciar das demais.</p>
+                    <p style="color:var(--secondary); margin-bottom:18px;">Preencha em etapas. Os botões desta aba são roxos para diferenciar das demais.</p>
 
                     <div class="wizard-dots">
                         <span class="wizard-dot active" id="pdot-1"></span>
@@ -1279,7 +1248,7 @@ html, body {
                     <h2>Cadastro Manual de Morador</h2>
                     <label>Nome Completo</label>
                     <input type="text" id="novo-morador-nome" placeholder="Ex: João da Silva">
-
+                    
                     <label style="margin-top: 10px;">Unidade</label>
                     <div class="apto-grid">
                         <input type="number" id="novo-morador-num" placeholder="Nº (Ex: 101)">
@@ -1289,9 +1258,9 @@ html, body {
 
                     <label style="margin-top: 10px;">Telefone (WhatsApp)</label>
                     <input type="tel" id="novo-morador-telefone" placeholder="(11) 99999-9999" inputmode="numeric" autocomplete="tel" maxlength="15" oninput="window.formatarCelular(this)" onblur="window.validarCampoCelular(this)">
-
+                    
                     <button class="btn btn-primary" onclick="window.adicionarMorador()" style="margin-top: 10px;">Salvar Morador</button>
-
+                    
                     <hr style="margin: 30px 0; border: 0; border-top: 1px dashed var(--border);">
                     <h3>Importar Planilha em Massa</h3>
                     <p style="font-size: 0.9rem; color: var(--secondary); margin-bottom: 10px;">Formatos aceitos: TXT, CSV, XLS ou XLSX. Colunas reconhecidas: Nome, Nº Apto/Apartamento, Letra, Bloco e Telefone.</p>
@@ -1420,7 +1389,7 @@ html, body {
                 <div class="card" style="border-color: var(--danger);">
                     <h2 style="color: var(--danger);">DANGER ZONE</h2>
                     <p style="margin-bottom: 20px; color: var(--secondary);">Área restrita a administradores. Cuidado com operações destrutivas.</p>
-
+                    
                     <button class="btn btn-success" onclick="window.exportarBackupJSON()" style="margin-right: 10px;">Baixar Backup do Banco (JSON)</button>
                     <button class="btn btn-danger" onclick="window.limparHistorico()">Apagar Banco de Dados (WIPE)</button>
                 </div>
@@ -1542,7 +1511,7 @@ html, body {
         window.fazerLogin = async function() {
             const userIn = document.getElementById('login-user').value.trim().toLowerCase();
             const passIn = document.getElementById('login-pass').value.trim();
-
+            
             // Administrador padrão Master fallback (hardcoded de segurança)
             if (userIn === 'admin' && passIn === 'admin1234') {
                 sessionStorage.setItem('salaJogos_user', JSON.stringify({ nome: 'Administrador Supremo', role: 'admin', usuario: 'admin' }));
@@ -1559,7 +1528,7 @@ html, body {
                 const q = query(collection(db, "usuarios"));
                 const querySnapshot = await getDocs(q);
                 let userObj = null;
-
+                
                 querySnapshot.forEach(doc => {
                     const u = doc.data();
                     if(u.usuario === userIn && u.senha === passIn) {
@@ -1743,37 +1712,14 @@ html, body {
         };
 
         window.mudarSubAbaJogos = function(view) {
-            const childMode = view === 'crianca';
-            const historyMode = view === 'historico';
-            const viewEmUso = document.getElementById('jogos-subview-emuso');
-            const viewHistorico = document.getElementById('jogos-subview-historico');
-            const painelEmUso = document.getElementById('painel-jogos-em-uso');
-            const btnNormal = document.getElementById('subnav-jogos-emuso');
-            const btnCrianca = document.getElementById('subnav-jogos-crianca');
-            const btnHistorico = document.getElementById('subnav-jogos-historico');
-
-            viewEmUso.classList.toggle('hidden', historyMode);
-            viewHistorico.classList.toggle('hidden', !historyMode);
-            if (painelEmUso) painelEmUso.classList.toggle('hidden', childMode);
-
-            [btnNormal, btnCrianca, btnHistorico].forEach(btn => {
-                if (!btn) return;
-                btn.className = 'btn btn-secondary';
-                btn.style.padding = '8px 14px';
-                btn.style.fontSize = '.8rem';
+            document.getElementById('jogos-subview-emuso').classList.toggle('hidden', view !== 'emuso');
+            document.getElementById('jogos-subview-historico').classList.toggle('hidden', view !== 'historico');
+            document.getElementById('subnav-jogos-emuso').className = view === 'emuso' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('subnav-jogos-historico').className = view === 'historico' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.querySelectorAll('#subnav-jogos-emuso, #subnav-jogos-historico').forEach(b => {
+                b.style.padding = '8px 14px';
+                b.style.fontSize = '.8rem';
             });
-            const activeBtn = historyMode ? btnHistorico : (childMode ? btnCrianca : btnNormal);
-            if (activeBtn) activeBtn.className = 'btn btn-primary';
-
-            const checkboxCrianca = document.getElementById('retirada-crianca');
-            if (checkboxCrianca) checkboxCrianca.checked = childMode;
-            window.alternarRetiradaCrianca();
-
-            if (childMode) {
-                setTimeout(() => {
-                    document.querySelector('.wizard-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 60);
-            }
         };
 
 
@@ -2458,13 +2404,13 @@ html, body {
 
             moradoresLista.push({ id: Date.now().toString(), nome, aptoNum: num, aptoLetra: letra, bloco: bloco, telefone: tel });
             await setDoc(doc(db, 'moradores', 'lista'), { array: moradoresLista });
-
+            
             document.getElementById('novo-morador-nome').value = '';
             document.getElementById('novo-morador-num').value = '';
             document.getElementById('novo-morador-letra').value = '';
             document.getElementById('novo-morador-bloco').value = '';
             document.getElementById('novo-morador-telefone').value = '';
-
+            
             renderizarMoradores();
             window.mostrarBanner('MORADOR REGISTRADO', 'success');
         };
@@ -2611,7 +2557,7 @@ html, body {
                     window.mostrarBanner('Preencha o apartamento e o telefone.', 'danger');
                     return;
                 }
-
+                
                 // Validação estrita: somente celular brasileiro com 11 dígitos.
                 if (!window.validarCelular(telefone)) {
                     window.mostrarBanner('Celular inválido! Use o padrão (11) 99999-9999.', 'danger');
@@ -2637,21 +2583,21 @@ html, body {
                 const aptoMatch = termoNormalizado.length >= 2 && aptoFull.includes(termoNormalizado);
                 return nomeMatch || aptoMatch;
             }).slice(0, 5);
-
+            
             matches.forEach(m => {
                 const divItem = document.createElement('div');
                 divItem.className = 'sugestao-item';
                 const exibeApto = formatarAptoDisplay(m.aptoNum, m.aptoLetra, m.bloco, m.apartamento);
                 divItem.innerHTML = `<strong>${m.nome}</strong> <span style="font-size:0.8rem; color:var(--primary); margin-left:10px;">[${exibeApto}]</span>`;
-
+                
                 divItem.onclick = () => {
                     document.getElementById('retirada-morador').value = m.nome;
-
+                    
                     // Preencher o celular do cadastro, mantendo o campo editável
                     const campoTelefone = document.getElementById('retirada-telefone');
                     campoTelefone.value = m.telefone || '';
                     window.formatarCelular(campoTelefone);
-
+                    
                     if (m.aptoNum) {
                         document.getElementById('retirada-apto-num').value = m.aptoNum;
                         document.getElementById('retirada-apto-letra').value = m.aptoLetra || '';
@@ -2673,7 +2619,7 @@ html, body {
                 catalogoJogos = [];
                 snapshot.forEach(doc => catalogoJogos.push({ id: doc.id, ...doc.data() }));
                 renderizarCatalogo();
-
+                
                 const divJogos = document.getElementById('retirada-jogos-lista');
                 divJogos.innerHTML = '';
                 if(catalogoJogos.length === 0) {
@@ -3281,9 +3227,9 @@ html, body {
                     dataDevolucaoPrevista: null,
                     status: dataDevolucaoPrevistaValor ? 'devolvido' : 'retirado'
                 });
-
+                
                 window.mostrarBanner('RETIRADA CONFIRMADA!', 'success');
-
+                
                 // Limpar Form
                 document.querySelectorAll('input[name="jogo-selecionado"]').forEach(c => c.checked = false);
                 document.getElementById('retirada-apenas-chave').checked = false;
@@ -3293,7 +3239,7 @@ html, body {
                 document.getElementById('retirada-apto-letra').value = '';
                 document.getElementById('retirada-bloco').value = '';
                 document.getElementById('retirada-telefone').value = '';
-
+                
                 window.wizardReset();
 
                 // Enviar WhatsApp
@@ -3355,29 +3301,11 @@ html, body {
         function renderizarHistorico() {
             const lista = document.getElementById('tabela-historico');
             lista.innerHTML = '';
-            const busca = (document.getElementById('busca-historico')?.value || '').trim().toLocaleLowerCase('pt-BR');
-            const registros = historicoCompleto.filter(data => {
-                const retirado = data.status === 'retirado';
-                const apto = formatarAptoDisplay(data.aptoNum, data.aptoLetra, data.bloco, data.apartamento);
-                const texto = [data.moradorNome, apto, data.aptoNum, data.aptoLetra, data.bloco, data.jogoNome,
-                    retirado ? 'em uso aberto retirado pendente' : 'devolvido concluído'].filter(Boolean).join(' ').toLocaleLowerCase('pt-BR');
-                return texto.includes(busca);
-            });
-            const resumo = document.getElementById('historico-resumo');
-            if (resumo) {
-                const emUso = historicoCompleto.filter(d => d.status === 'retirado').length;
-                const devolvidos = historicoCompleto.length - emUso;
-                resumo.innerHTML = `<span>📋 ${historicoCompleto.length} registros</span><span>⏳ ${emUso} em uso</span><span>✅ ${devolvidos} devolvidos</span>`;
-            }
             if (historicoCompleto.length === 0) {
                 lista.innerHTML = '<p style="color:var(--secondary);">Nenhum registro ainda.</p>';
                 return;
             }
-            if (registros.length === 0) {
-                lista.innerHTML = '<p style="color:var(--secondary);">Nenhum resultado para essa busca.</p>';
-                return;
-            }
-            registros.forEach(data => {
+            historicoCompleto.forEach(data => {
                 const retirado = data.status === 'retirado';
                 const nomeFormatado = (data.moradorNome || '').toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase());
                 const aptoDisplay = formatarAptoDisplay(data.aptoNum, data.aptoLetra, data.bloco, data.apartamento);
@@ -3445,7 +3373,7 @@ html, body {
                 historicoParaExportar = snap.docs.map(d => ({ id: d.id, ...d.data() }));
             } catch (e) { console.error(e); }
             const dadosExport = historicoParaExportar.map(h => ({
-                Jogo: h.jogoNome, Morador: h.moradorNome,
+                Jogo: h.jogoNome, Morador: h.moradorNome, 
                 Apartamento: formatarAptoDisplay(h.aptoNum, h.aptoLetra, h.bloco, h.apartamento),
                 Status: h.status.toUpperCase(),
                 Retirada: formatarData(h.dataRetirada), Devolucao: h.dataDevolucao ? formatarData(h.dataDevolucao) : ''
@@ -3528,25 +3456,25 @@ html, body {
             reader.onload = async e => {
                 try {
                     let rows = [];
-
+                    
                     if (ext === 'txt' || ext === 'csv') {
                         // Tratar como CSV separado por vírgula ou ponto-e-vírgula
                         const rawText = new TextDecoder("utf-8").decode(new Uint8Array(e.target.result));
-
+                        
                         // Detectar separador mais provável
                         const countComma = (rawText.match(/,/g) || []).length;
                         const countSemicolon = (rawText.match(/;/g) || []).length;
                         const countTab = (rawText.match(/\t/g) || []).length;
-
+                        
                         let separator = ',';
                         if (countSemicolon > countComma && countSemicolon > countTab) separator = ';';
                         else if (countTab > countComma && countTab > countSemicolon) separator = '\t';
-
+                        
                         // Parse simple CSV/TXT line by line
                         const lines = rawText.split('\n').filter(line => line.trim().length > 0);
                         if(lines.length > 0) {
                             const headers = lines[0].split(separator).map(h => h.trim().replace(/^["']|["']$/g, ''));
-
+                            
                             for(let i = 1; i < lines.length; i++) {
                                 const values = lines[i].split(separator).map(v => v.trim().replace(/^["']|["']$/g, ''));
                                 let rowObj = {};
@@ -3564,7 +3492,7 @@ html, body {
                         if (!wb.SheetNames?.length) throw new Error('A planilha não possui nenhuma aba.');
                         rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {defval:'', raw:false});
                     }
-
+                    
                     if (!rows.length) throw new Error('A primeira aba da planilha (ou arquivo texto) está vazia.');
 
                     let importados=0, semApto=0, ignorados=0;
@@ -3582,45 +3510,45 @@ html, body {
                         const blocoV=valorColuna(row,['Bloco','Bloco Apto']);
                         const telV=valorColuna(row,['Telefone','Celular','WhatsApp','Whatsapp','Fone','Contato']);
                         const matV=valorColuna(row,['Matricula','Matrícula','ID','Codigo','Código']);
-
+                        
                         const u=unidade(unidadeV);
                         let aptoNum=texto(numeroV!==undefined?numeroV:u.aptoNum);
                         let aptoLetra=texto(letraV!==undefined?letraV:u.aptoLetra).toUpperCase();
                         let bloco=texto(blocoV!==undefined?blocoV:u.bloco).toUpperCase();
-
+                        
                         if (unidadeV===undefined && numeroV===undefined && keys.length>=4) {
                             aptoNum=aptoNum||texto(row[keys[1]]); aptoLetra=aptoLetra||texto(row[keys[2]]).toUpperCase(); bloco=bloco||texto(row[keys[3]]).toUpperCase();
                         }
-
+                        
                         const telefone=num(telV!==undefined?telV:(keys[4]?row[keys[4]]:''));
                         const matricula=texto(matV!==undefined?matV:'');
-
+                        
                         // Verifica se o morador já existe (por nome, ignorando maiúsculas e espaços extras)
                         const jaExiste = listaTemporaria.some(m => m.nome.toLowerCase() === nome.toLowerCase());
-
+                        
                         if (!jaExiste) {
                             listaTemporaria.push({id:Date.now().toString()+Math.random().toString(36).slice(2,8),nome,aptoNum,aptoLetra,bloco,telefone,matricula});
-                            importados++;
+                            importados++; 
                             if(!aptoNum&&!bloco) semApto++;
                         } else {
                             ignorados++;
                         }
                     }
-
+                    
                     if (!importados && !ignorados) throw new Error('Nenhum morador válido foi encontrado. Confira os cabeçalhos da planilha.');
-
+                    
                     if (importados > 0) {
                         moradoresLista = listaTemporaria;
                         await setDoc(doc(db,'moradores','lista'),{array:moradoresLista});
                         renderizarMoradores();
-
+                        
                         let msg=`DADOS ATUALIZADOS: ${importados} moradores novos inseridos.`;
                         if(semApto) msg+=` (${semApto} sem apartamento/bloco).`;
-                        window.mostrarBanner(msg,'success');
+                        window.mostrarBanner(msg,'success'); 
                     } else {
                         window.mostrarBanner("Nenhum morador novo inserido (já cadastrados ou linhas vazias).", "info");
                     }
-
+                    
                     input.value='';
                 } catch(err) {
                     console.error('Erro ao importar planilha:',err);
@@ -3634,7 +3562,7 @@ html, body {
         };
 
         // ADMIN
-
+        
         window.deletarRegistroHistorico = async function(id) {
             if(!confirm('WIPE: Apagar este registro permanentemente do histórico?')) return;
             try {
@@ -3670,12 +3598,12 @@ html, body {
             const a = document.createElement('a'); a.href = dataStr; a.download = `backup_sistema_${Date.now()}.json`; a.click();
         };
 
-
+        
         // ======= GERENCIAMENTO DE USUÁRIOS (FIREBASE) =======
         function carregarUsuariosRealtime() {
             if (pararUsuariosRealtime) pararUsuariosRealtime();
             if (currentUser?.role !== 'admin') return; // Operador não precisa carregar isso
-
+            
             pararUsuariosRealtime = onSnapshot(query(collection(db, "usuarios")), (snapshot) => {
                 usuariosLista = [];
                 snapshot.forEach(doc => usuariosLista.push({ id: doc.id, ...doc.data() }));
@@ -3687,7 +3615,7 @@ html, body {
             const tbody = document.getElementById('tabela-usuarios');
             if(!tbody) return;
             tbody.innerHTML = `<tr><td style="font-weight:bold; color:var(--primary);">Administrador Supremo</td><td>admin</td><td><span class="role-badge">ADMIN</span></td><td class="admin-only">-</td></tr>`;
-
+            
             usuariosLista.forEach(u => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -3705,12 +3633,12 @@ html, body {
             const nome = document.getElementById('novo-usuario-nome').value.trim();
             const usuario = document.getElementById('novo-usuario-login').value.trim().toLowerCase();
             const senha = document.getElementById('novo-usuario-senha').value.trim();
-
-            if (!nome || !usuario || !senha) {
-                window.mostrarBanner('Preencha Nome, Login e Senha.', 'danger');
-                return;
+            
+            if (!nome || !usuario || !senha) { 
+                window.mostrarBanner('Preencha Nome, Login e Senha.', 'danger'); 
+                return; 
             }
-
+            
             try {
                 await addDoc(collection(db, "usuarios"), { nome, usuario, senha, role: 'operador' });
                 document.getElementById('novo-usuario-nome').value = '';
@@ -3733,7 +3661,7 @@ html, body {
             }
         };
 
-
+        
 
 
 // ===== OUTRAS CHAVES: catálogo, retiradas e histórico separados de jogos =====
