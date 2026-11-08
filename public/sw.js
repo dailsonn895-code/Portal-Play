@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portal-play-shell-v3-other-keys';
+const CACHE_NAME = 'portal-play-v6-convidados-festa';
 const APP_SHELL = [
   './',
   './index.html',

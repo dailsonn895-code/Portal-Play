@@ -14,7 +14,7 @@
     <!-- Google Fonts para visual Gamer -->
     <!-- Fonte externa removida para acelerar a primeira abertura -->
     
-<style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=r_2FtRJP5mp7AVie5O8hkGzrB06nUvk_SgDHs7ezE6pHYTT1VZROQcXedqdPn_FsrK8YJDbueZKga9WkqQz8ECJeOo3mzxzpZ_ngCD1IiowAMIMYAblyaJDMUW05_IwJJPNLfbiJMoahe796NOMU5N02v_jJDhO4GFR95OL572PLeApuYKTjpVUJvBdfmxkyBksv4rltljXMjNKO-EpLjole7xM6EsFJGC4FH9wU0wJfAHn5-Xl9O4Q-ISrwauMTiIuVt7ByECoMiI2wHO1gE8cNuhnnPn6X509l74trfq3BAHwOhC2KiYMcoLRWrDnK" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jb250cmlidXRpb24udXNlcmNvbnRlbnQuZ29vZ2xlLmNvbS9kb3dubG9hZD9jPUNneGlZWEprWDNOMGIzSmhaMlVTVUJJTmNtVnpjRzl1YzJWZlpHRjBZUm9fQ2pCaFlqWm1ZakJsWVRkbFlUUTRZakV5TURBd05qVm1OVEUyTjJNd09ERXpaVEE0TkRReFpXSXpaakF5WmpFMFlURVNDeElIRU9pVzlhS05FaGdCJmZpbGVuYW1lPWluZGV4Lmh0bWwmb3BpPTEwMzEzNTA1MA"/><style>
         :root {
             --bg-base: #1E1A17; /* Madeira bem escura / Carvão */
             --surface: #2D2520; /* Madeira rica e couro */
@@ -741,7 +741,92 @@ html, body {
 .chave-item strong {overflow-wrap:anywhere} .chave-item button {margin-top:8px}
 .chave-field {margin:12px 0} .chave-muted {font-size:.85rem;color:#675d82}
 </style>
-</head>
+<style>
+#main-nav{gap:10px;padding:12px;flex-wrap:wrap}
+#main-nav button{border:2px solid currentColor;border-radius:12px;padding:12px 16px;margin:0;opacity:.85}
+#main-nav button.active{opacity:1;box-shadow:0 3px 0 currentColor;background:#f7f5ff}
+#nav-jogos{color:#673bb7}#nav-outras-chaves{color:#1554a2}
+#nav-ocorrencias{color:#8c1830}#nav-prestadores{color:#17633f}
+#tab-jogos,#tab-outras-chaves,#tab-ocorrencias,#tab-prestadores{border:2px solid;border-radius:18px;padding:18px}
+#tab-jogos{border-color:#673bb7}#tab-outras-chaves{border-color:#1554a2}#tab-ocorrencias{border-color:#8c1830}#tab-prestadores{border-color:#17633f}
+#tab-outras-chaves .btn-row{gap:10px}#tab-outras-chaves [id^="chave-etapa-"]>button{margin:14px 10px 0 0}
+@media(max-width:600px){#main-nav button{white-space:normal;flex:1 1 140px}#tab-jogos,#tab-outras-chaves,#tab-ocorrencias,#tab-prestadores{padding:10px}}
+</style><style id="outras-chaves-wizard-styles">
+/* ===== ESTILOS DO ASSISTENTE PASSO A PASSO DE OUTRAS CHAVES ===== */
+#tab-outras-chaves .wizard-dot.active {
+    background: #2167c8;
+    box-shadow: 0 0 12px rgba(33, 103, 200, 0.45);
+}
+#tab-outras-chaves .wizard-step-title {
+    color: #154c91;
+}
+.chave-tipo-opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.chave-tipo-card {
+    border: 2px solid #b9d3fa;
+    border-radius: 14px;
+    background: #f4f8ff;
+    color: #154c91;
+    padding: 16px 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+.chave-tipo-card:hover {
+    border-color: #2167c8;
+    background: #e6f0ff;
+}
+.chave-tipo-card.ativo {
+    border-color: #2167c8;
+    background: #2167c8;
+    color: #ffffff;
+    box-shadow: 0 4px 0 #164786;
+}
+#chave-morador-sugestoes {
+    background: #ffffff;
+    border: 2px solid #b9d3fa;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 180px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+    box-shadow: 0 10px 24px rgba(21, 84, 162, 0.15);
+}
+#chave-morador-sugestoes:empty {
+    display: none;
+}
+.chave-resumo-box {
+    background: #f4f8ff;
+    border: 2px solid #c9dbf5;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    color: #154c91;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+@media (max-width: 520px) {
+    .chave-tipo-opcoes {
+        grid-template-columns: 1fr;
+    }
+}
+</style><style>
+#tab-outras-chaves button,#nav-outras-chaves{font-family:'Arial Black',Arial,sans-serif!important;background:#d5d5d5!important;color:#111!important;border:2px solid #686868!important;box-shadow:0 3px 0 #666!important}
+#tab-outras-chaves button:hover{background:#bcbcbc!important}#tab-outras-chaves button:disabled{opacity:.5}
+#tab-outras-chaves .wizard-step.hidden{display:none!important}#tab-outras-chaves .wizard-dot.active{background:#555!important}
+#tab-convidados{border:2px solid #916016;border-radius:18px;padding:18px}#nav-convidados{color:#805012!important}
+.festa-pessoa{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;margin:8px 0;border:1px solid #ddd;border-radius:12px;background:#fff}.festa-pessoa span{overflow-wrap:anywhere}.festa-pessoa button{min-height:44px;flex-shrink:0}
+#festa-sugestoes button{display:block;width:100%;text-align:left;margin:6px 0}#tab-convidados label{display:block;margin-top:12px}
+@media(max-width:600px){#tab-convidados{padding:10px}.festa-pessoa{flex-wrap:wrap}}
+</style></head>
 
 <body>
 
@@ -774,6 +859,7 @@ html, body {
         <nav id="main-nav">
             <button onclick="window.mudarAba('tab-jogos')" id="nav-jogos" class="active">🎮 JOGOS</button>
             <button onclick="window.mudarAba('tab-outras-chaves')" id="nav-outras-chaves">🔑 OUTRAS CHAVES</button>
+<button id="nav-convidados" onclick="window.mudarAba('tab-convidados')">🎉 CONVIDADOS FESTA</button>
             <button onclick="window.mudarAba('tab-ocorrencias')" id="nav-ocorrencias">🚨 OCORRÊNCIAS</button>
             <button onclick="window.mudarAba('tab-prestadores')" id="nav-prestadores">🛠️ PRESTADOR DE SERVIÇO</button>
             <!-- Abas de administração -->
@@ -785,23 +871,127 @@ html, body {
         </nav>
 
         <main>
+<section id="tab-convidados" class="hidden">
+ <div class="card"><h2>🎉 Convidados Festa</h2><label for="festa-evento">Listas cadastradas</label><select id="festa-evento" onchange="window.festaSelecionar(this.value)"><option value="">Selecione uma festa</option></select><p id="festa-conexao" role="status"></p><button class="btn btn-secondary" onclick="window.festaNova()">＋ NOVA LISTA</button></div>
+ <div id="festa-cadastro" class="card"><h3>Cadastrar festa</h3><label for="festa-morador">Morador ou apartamento</label><input id="festa-morador" oninput="window.festaBuscarMorador()" autocomplete="off" placeholder="Busque no cadastro de moradores"><div id="festa-sugestoes"></div><p id="festa-morador-escolhido" aria-live="polite">Selecione o responsável pela festa.</p>
+ <label for="festa-data">Data da festa</label><input type="date" id="festa-data"><label for="festa-nomes">Lista de convidados — um nome por linha</label><textarea id="festa-nomes" oninput="document.getElementById('festa-previa').classList.add('hidden')" rows="10" style="width:100%;padding:12px" placeholder="Cole a lista aqui"></textarea><button class="btn btn-primary" onclick="window.festaPrever()">CONFERIR LISTA</button><div id="festa-previa" class="hidden"><p id="festa-previa-info" role="status"></p><div id="festa-previa-nomes" style="max-height:260px;overflow:auto"></div><button id="festa-salvar" class="btn btn-success" onclick="window.festaSalvar()">APROVAR E CRIAR LISTA</button></div></div>
+ <div id="festa-controle" class="hidden"><div class="card"><h3 id="festa-titulo"></h3><p id="festa-contadores" role="status"></p><label for="festa-busca">Buscar convidado</label><input type="search" id="festa-busca" oninput="window.festaRender()" placeholder="Nome do convidado"></div>
+ <div class="card"><h3>Aguardando entrada</h3><div id="festa-pendentes"></div></div><div class="card"><h3>Histórico de entradas</h3><p>Entradas mais recentes primeiro.</p><div id="festa-entradas"></div></div></div>
+</section>
             
 <section id="tab-outras-chaves" class="hidden">
- <div class="card"><h2>🔑 Outras Chaves</h2><p class="chave-muted">Registre a retirada de chaves de moradores e funcionários. As chaves em uso ficam listadas abaixo.</p>
-  <div class="chave-field"><label>Quem vai retirar?</label><select id="chave-tipo" onchange="window.chaveTrocarTipo()"><option value="morador">Morador</option><option value="funcionario">Funcionário / uso interno</option></select></div>
-  <div id="chave-bloco-morador">
-   <label>Buscar morador cadastrado</label><input id="chave-morador-busca" placeholder="Digite nome ou apartamento" oninput="window.chaveBuscarMorador()" autocomplete="off">
-   <div id="chave-morador-sugestoes" class="chave-grid"></div><p id="chave-morador-selecionado" class="chave-muted">Selecione um morador da lista para usar seus dados de cadastro.</p>
-  </div>
-  <div id="chave-bloco-funcionario" class="hidden"><label>Funcionário que retirou</label><select id="chave-funcionario" onchange="window.chaveTrocarFuncionario()"></select>
-  <div id="chave-outro-funcionario" class="hidden"><label>Nome do funcionário</label><input id="chave-funcionario-outro" placeholder="Digite o nome"></div></div>
-  <div class="chave-field"><label>Chave</label><select id="chave-item-select"></select></div>
-  <div class="chave-field"><label>Finalidade / observação (opcional)</label><textarea id="chave-observacao" rows="2" style="width:100%;padding:12px" placeholder="Ex.: manutenção de rotina"></textarea></div>
-  <button class="btn btn-chave" onclick="window.chaveRegistrar()">🔑 CONFIRMAR RETIRADA</button>
- </div>
- <div class="card"><h2>Chaves em uso</h2><div id="chave-ativas">Carregando...</div></div>
- <div class="card"><h2>Histórico de outras chaves</h2><div id="chave-historico">Carregando...</div></div>
-</section>
+                <!-- Botões para alternar entre o Registo Atual e o Histórico -->
+                <div class="btn-row" style="margin-bottom:18px">
+                    <button id="chaves-nav-registro" class="btn btn-primary" onclick="window.verAreaHistorico('chaves',false)">🔑 RETIRADA / EM USO</button>
+                    <button id="chaves-nav-historico" class="btn btn-secondary" onclick="window.verAreaHistorico('chaves',true)">📋 HISTÓRICO</button>
+                </div>
+
+                <!-- VISTA 1: ASSISTENTE DE RETIRADA E CHAVES EM USO -->
+                <div id="chaves-view-registro">
+                    <div class="card wizard-card">
+                        <h2>🔑 Iniciar Retirada de Chave</h2>
+                        <p id="chave-etapa-info" class="chave-muted" style="text-align:center; margin-top:-10px; margin-bottom:14px;" aria-live="polite">
+                            Passo 1 de 3 — Quem vai retirar?
+                        </p>
+
+                        <!-- Indicadores visuais de progresso (iguais aos da Sala de Jogos) -->
+                        <div class="wizard-dots">
+                            <span class="wizard-dot active" id="cdot-1"></span>
+                            <span class="wizard-dot" id="cdot-2"></span>
+                            <span class="wizard-dot" id="cdot-3"></span>
+                        </div>
+
+                        <!-- PASSO 1: Escolher se é Morador ou Retirada Interna -->
+                        <div class="wizard-step" id="chave-etapa-1">
+                            <h3 class="wizard-step-title">Quem está retirando?</h3>
+                            <input type="hidden" id="chave-tipo" value="morador">
+
+                            <div class="chave-tipo-opcoes">
+                                <button type="button" id="btn-tipo-morador" class="chave-tipo-card ativo" onclick="window.chaveEscolherTipo('morador')">
+                                    🏠 Morador
+                                </button>
+                                <button type="button" id="btn-tipo-funcionario" class="chave-tipo-card" onclick="window.chaveEscolherTipo('funcionario')">
+                                    🛠️ Retirada Interna
+                                </button>
+                            </div>
+
+                            <button type="button" class="btn btn-chave wizard-next" onclick="window.chaveIrEtapa(2)" style="width:100%;">
+                                PRÓXIMO
+                            </button>
+                        </div>
+
+                        <!-- PASSO 2: Identificar o Morador ou o Funcionário -->
+                        <div class="wizard-step hidden" id="chave-etapa-2">
+                            <h3 class="wizard-step-title" id="chave-titulo-etapa-2">Qual morador está retirando?</h3>
+
+                            <!-- Bloco de busca de Morador -->
+                            <div id="chave-bloco-morador">
+                                <div style="position: relative;">
+                                    <label>Buscar Morador (Digite Nome ou Apartamento)</label>
+                                    <input id="chave-morador-busca" placeholder="Digite para buscar..." oninput="window.chaveBuscarMorador()" autocomplete="off">
+                                    <div id="chave-morador-sugestoes"></div>
+                                </div>
+                                <p id="chave-morador-selecionado" class="chave-muted" style="margin-top:6px;">
+                                    Toque no nome do morador na lista para avançar automaticamente.
+                                </p>
+                            </div>
+
+                            <!-- Bloco de seleção de Funcionário -->
+                            <div id="chave-bloco-funcionario" class="hidden">
+                                <label>Funcionário que retirou</label>
+                                <select id="chave-funcionario" onchange="window.chaveTrocarFuncionario(true)"></select>
+                                <div id="chave-outro-funcionario" class="hidden" style="margin-top:8px;">
+                                    <label>Nome do funcionário</label>
+                                    <input id="chave-funcionario-outro" placeholder="Digite o nome">
+                                </div>
+                            </div>
+
+                            <div class="wizard-actions" style="margin-top:14px;">
+                                <button type="button" class="btn btn-danger" onclick="window.chaveIrEtapa(1)">VOLTAR</button>
+                                <button type="button" class="btn btn-chave wizard-next" onclick="window.chaveIrEtapa(3)">PRÓXIMO</button>
+                            </div>
+                        </div>
+
+                        <!-- PASSO 3: Escolher a Chave, Observação e Confirmar -->
+                        <div class="wizard-step hidden" id="chave-etapa-3">
+                            <h3 class="wizard-step-title">Qual chave vai levar?</h3>
+
+                            <div id="chave-resumo" class="chave-resumo-box"></div>
+
+                            <div class="chave-field">
+                                <label>Selecione a Chave</label>
+                                <select id="chave-item-select"></select>
+                            </div>
+
+                            <div class="chave-field">
+                                <label>Finalidade / observação (opcional)</label>
+                                <textarea id="chave-observacao" rows="2" style="width:100%;padding:12px" placeholder="Ex.: manutenção de rotina"></textarea>
+                            </div>
+
+                            <div class="wizard-actions" style="margin-top:14px;">
+                                <button type="button" class="btn btn-danger" onclick="window.chaveIrEtapa(2)">VOLTAR</button>
+                                <button type="button" id="chave-confirmar" class="btn btn-chave wizard-next" onclick="window.chaveRegistrar()">
+                                    🔑 CONFIRMAR RETIRADA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Chaves em uso <span style="font-size: 0.9rem; color: var(--danger); font-family: var(--font-body); font-weight: bold;">(Não Devolvidas)</span></h2>
+                        <div id="chave-ativas">Carregando...</div>
+                    </div>
+                </div>
+
+                <!-- VISTA 2: HISTÓRICO DE OUTRAS CHAVES -->
+                <div id="chaves-view-historico" class="hidden">
+                    <div class="card">
+                        <h2>Histórico de outras chaves</h2>
+                        <p class="chave-muted">Retiradas em aberto e devoluções, da mais recente para a mais antiga. Exibindo até 150 registros.</p>
+                        <div id="chave-historico">Carregando...</div>
+                    </div>
+                </div>
+            </section>
 
             <!-- ABA: EMPRÉSTIMOS ATUAIS (VISÃO CLEAN) -->
             <section id="tab-jogos">
@@ -937,7 +1127,7 @@ html, body {
 
 
             <!-- ABA: PRESTADOR DE SERVIÇO -->
-            <section id="tab-prestadores" class="hidden">
+            <section id="tab-prestadores" class="hidden"><div class="btn-row" style="margin-bottom:18px"><button id="prestadores-nav-registro" class="btn btn-primary" onclick="window.verAreaHistorico('prestadores',false)">➕ REGISTRAR PRESTADOR</button><button id="prestadores-nav-historico" class="btn btn-secondary" onclick="window.verAreaHistorico('prestadores',true)">📋 HISTÓRICO</button></div><div id="prestadores-view-registro">
                 <div class="card wizard-card" style="border-color:#6C3CE9;">
                     <h2 style="color:#6C3CE9;">🛠️ Registrar Prestador de Serviço</h2>
                     <p style="color:var(--secondary); margin-bottom:18px;">Preencha em etapas. Os botões desta aba são roxos para diferenciar das demais.</p>
@@ -1033,14 +1223,14 @@ html, body {
 
                 </div>
 
-                <div class="card">
-                    <h2>🛠️ Registros recentes</h2>
+</div><div id="prestadores-view-historico" class="hidden">                <div class="card">
+                    <h2>Histórico de prestadores</h2><p class="chave-muted">Últimos 100 registros de entrada e saída.</p>
                     <p style="color:var(--secondary);font-size:.82rem;margin-top:-10px;margin-bottom:14px;">A entrada é registrada automaticamente. Quando o prestador sair, toque em <strong>REGISTRAR SAÍDA</strong>.</p>
                     <div id="lista-prestadores">
                         <p style="color:var(--secondary);">Carregando...</p>
                     </div>
                 </div>
-            </section>
+            </div></section>
 
             <!-- ABA: CATÁLOGO DE JOGOS (ADMIN) -->
             <section id="tab-catalogo" class="hidden">
@@ -1072,7 +1262,7 @@ html, body {
             <section id="tab-ocorrencias" class="hidden">
                 <div style="display:flex; gap:8px; margin-bottom: 18px;">
                     <button id="subnav-oc-nova" class="btn btn-ocorrencia" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaOcorrencias('nova')">➕ NOVA</button>
-                    <button id="subnav-oc-lista" class="btn btn-ocorrencia-outline" style="padding:8px 14px; font-size:.8rem;" onclick="window.mudarSubAbaOcorrencias('lista')">📋 LISTA</button>
+                    <button id="subnav-oc-lista" class="btn btn-ocorrencia-outline" style="padding:8px 14px; font-size:.8rem;" onclick="window.filtrarOcorrencias('todas');window.mudarSubAbaOcorrencias('lista')">📋 HISTÓRICO</button>
                 </div>
 
                 <div id="oc-subview-nova">
@@ -1191,7 +1381,7 @@ html, body {
 
                 <div id="oc-subview-lista" class="hidden">
                 <div class="card oc-card">
-                    <h2>🚨 Ocorrências</h2>
+                    <h2>Histórico de ocorrências</h2><p class="chave-muted">Ocorrências abertas e os 300 registros mais recentes.</p>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
                         <input id="busca-ocorrencias" type="search" placeholder="🔎 Buscar nome ou apartamento..." oninput="window.aplicarFiltrosOcorrencias()">
                         <select id="filtro-periodo-ocorrencias" onchange="window.aplicarFiltrosOcorrencias()"><option value="todos">📅 Todos os períodos</option><option value="hoje">Hoje</option><option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option></select>
@@ -1400,7 +1590,7 @@ html, body {
     <!-- SCRIPT PRINCIPAL -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, query, orderBy, onSnapshot, setDoc, getDoc, limit, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, query, orderBy, onSnapshot, setDoc, getDoc, limit, where, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         // CONFIGURAÇÃO FIREBASE
         const firebaseConfig = {
@@ -1557,6 +1747,8 @@ html, body {
         window.fazerLogout = function() {
             sessionStorage.removeItem('salaJogos_user');
             [pararCatalogoRealtime, pararEmprestimosRealtime, pararUsuariosRealtime, pararOcorrenciasRealtime, pararPrestadoresRealtime].forEach(parar => { if (parar) parar(); });
+            if(festaUnsub){festaUnsub();festaUnsub=null;}
+            festaEventos=[];festaAtual="";festaMorador=null;
             pararCatalogoRealtime = null;
             pararEmprestimosRealtime = null;
             pararUsuariosRealtime = null;
@@ -1600,6 +1792,7 @@ html, body {
             carregarPrestadoresRealtime();
             carregarUsuariosRealtime();
             chaveIniciarRealtime();
+            festaIniciar();
         };
 
         // MENSAGENS DO WHATSAPP (editáveis pelo admin)
@@ -1982,6 +2175,7 @@ html, body {
                     ${!saida ? `<button class="btn btn-prestador" type="button" onclick="window.registrarSaidaPrestador('${prestadorEsc(p.id)}')" style="width:100%;margin-top:12px;">🚪 REGISTRAR SAÍDA</button>` : `<div style="margin-top:12px;padding:10px;border-radius:10px;background:#eefbf4;color:#158653;text-align:center;font-weight:800;">✅ ENTRADA E SAÍDA REGISTRADAS</div>`}
                 </div>`;
             }).join('');
+            [...box.children].forEach((card,i)=>adicionarAcoesHistorico(card,'prestadores',prestadoresLista[i],[['dataCriacao','entrada'],['dataSaida','saída']]));
         }
 
         // MORADORES
@@ -2979,6 +3173,7 @@ html, body {
                         ${currentUser?.role === 'admin' ? `<button class="btn btn-danger" style="padding:8px 12px; font-size:.75rem;" onclick="window.excluirOcorrencia('${o.id}')">🗑️ EXCLUIR</button>` : ''}
                     </div>
                 `;
+                adicionarAcoesHistorico(card,'ocorrencias',o,[['dataCriacao','registro'],['dataResolucao','resolução']],false);
                 div.appendChild(card);
             });
         }
@@ -3109,12 +3304,13 @@ html, body {
             return new Date(ts);
         }
 
-        window.abrirEditarDataHora = function(id, campo, valorAtual) {
-            edicaoDataHoraAtual = { id, campo };
+        window.abrirEditarDataHora = function(id, campo, valorAtual, area = "salaJogos") {
+            if(!currentUser)return;
+            edicaoDataHoraAtual = { id, campo, area };
             const d = timestampParaDate(valorAtual);
             const pad = n => String(n).padStart(2, '0');
             document.getElementById('modal-datahora-titulo').textContent =
-                campo === 'dataDevolucao' ? 'Editar Devolução' : 'Editar Retirada';
+                ({dataDevolucao:'Editar Devolução',dataRetirada:'Editar Retirada',dataCriacao:'Editar Registro',dataSaida:'Editar Saída',dataResolucao:'Editar Resolução'})[campo] || 'Editar Data/Hora';
             document.getElementById('modal-datahora-data').value =
                 `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
             document.getElementById('modal-datahora-hora').value =
@@ -3128,7 +3324,10 @@ html, body {
         };
 
         window.salvarDataHoraEditada = async function() {
-            const { id, campo } = edicaoDataHoraAtual;
+            const { id, campo, area = "salaJogos" } = edicaoDataHoraAtual;
+            if(!currentUser)return;
+            const permitidos={salaJogos:["dataRetirada","dataDevolucao"],outrasChavesRetiradas:["dataRetirada","dataDevolucao"],prestadores:["dataCriacao","dataSaida"],ocorrencias:["dataCriacao","dataResolucao"]};
+            if(!permitidos[area]?.includes(campo))return;
             if (!id || !campo) return;
             const dataStr = document.getElementById('modal-datahora-data').value;
             const horaStr = document.getElementById('modal-datahora-hora').value;
@@ -3138,7 +3337,8 @@ html, body {
             }
             const novaData = new Date(`${dataStr}T${horaStr}:00`);
             try {
-                await updateDoc(doc(db, 'salaJogos', id), { [campo]: novaData });
+                if(!Number.isFinite(novaData.getTime())){window.mostrarBanner('Data ou hora inválida.','danger');return;}
+                await updateDoc(doc(db, area, id), { [campo]: ['prestadores','ocorrencias'].includes(area)?novaData.toISOString():novaData });
                 window.mostrarBanner('DATA/HORA ATUALIZADA', 'success');
                 window.fecharModalDataHora();
             } catch (e) {
@@ -3564,6 +3764,7 @@ html, body {
         // ADMIN
         
         window.deletarRegistroHistorico = async function(id) {
+            if(currentUser?.role!=="admin")return;
             if(!confirm('WIPE: Apagar este registro permanentemente do histórico?')) return;
             try {
                 await deleteDoc(doc(db, "salaJogos", id));
@@ -3664,95 +3865,382 @@ html, body {
         
 
 
-// ===== OUTRAS CHAVES: catálogo, retiradas e histórico separados de jogos =====
+// ===== OUTRAS CHAVES: catálogo, retiradas e histórico separados de jogos (fluxo passo a passo igual à Sala de Jogos) =====
 const CHAVES_INICIAIS = ["Banheiro S. Festas","Bicicletário","Casa das Bombas","C. Medição A","C. Medição B","C. Medição C","C. Medição D","Caixa Correspondencia","Depósito BC","Depósito CC","Depósito da Manutenção","DG","Portão de Passagem","Portão do Muro","Portão Reciclagem","Portão Tapume","Reservatório bomba C","Salão de festas","Torre de força","Vestiário"];
-let chaveCatalogo = [...CHAVES_INICIAIS], chaveFuncionarios = [], chaveMoradorSelecionado = null;
-let chaveRegistros = [], chaveUnsubConfig=null, chaveUnsubRegistros=null;
-const chaveEsc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const FUNCIONARIOS_INICIAIS = ['Patricia','Augusto','Jessica','Dailson','Rogério','Reney','Willian'];
+let chaveCatalogo = [...CHAVES_INICIAIS], chaveFuncionarios = [...FUNCIONARIOS_INICIAIS], chaveMoradorSelecionado = null;
+let chaveRegistros = [], chaveUnsubConfig = null, chaveUnsubRegistros = null;
+let chaveEtapaAtual = 1;
+
+const chaveEsc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const chaveData = v => v ? formatarData(v) : '—';
 const chaveNomeItem = item => String(item || '').trim();
+
+// Atualiza os selects de chaves e funcionários com base no catálogo e nas chaves em uso
 function chaveCatalogosRender() {
- const sel=document.getElementById('chave-item-select'); const antigo=sel.value;
- const ativas=new Set(chaveRegistros.filter(r=>r.status==='retirado').map(r=>r.chave));
- sel.replaceChildren();
- for(const nome of chaveCatalogo){const o=document.createElement('option');o.value=nome;o.textContent=nome+(ativas.has(nome)?' — EM USO':'');o.disabled=ativas.has(nome);sel.appendChild(o);}
- if([...sel.options].some(o=>o.value===antigo&&!o.disabled))sel.value=antigo;
- else sel.selectedIndex=[...sel.options].findIndex(o=>!o.disabled);
- const fun=document.getElementById('chave-funcionario');const anterior=fun.value;fun.replaceChildren();
- for(const [valor,texto] of [['','Selecione o funcionário...'],...chaveFuncionarios.map(f=>[f,f]),['__outro','+ Outro funcionário (digitar nome)']]) {
-  const o=document.createElement('option');o.value=valor;o.textContent=texto;fun.appendChild(o);
- }
- if([...fun.options].some(o=>o.value===anterior))fun.value=anterior;
- window.chaveTrocarFuncionario();
- const a=document.getElementById('admin-lista-chaves'), b=document.getElementById('admin-lista-funcionarios');
- if(document.activeElement!==a)a.value=chaveCatalogo.join('\n');
- if(document.activeElement!==b)b.value=chaveFuncionarios.join('\n');
+    const sel = document.getElementById('chave-item-select');
+    const antigo = sel.value;
+    const ativas = new Set(chaveRegistros.filter(r => r.status === 'retirado').map(r => r.chave));
+    sel.replaceChildren();
+    for (const nome of chaveCatalogo) {
+        const o = document.createElement('option');
+        o.value = nome;
+        o.textContent = nome + (ativas.has(nome) ? ' — EM USO' : '');
+        o.disabled = ativas.has(nome);
+        sel.appendChild(o);
+    }
+    if ([...sel.options].some(o => o.value === antigo && !o.disabled)) sel.value = antigo;
+    else sel.selectedIndex = [...sel.options].findIndex(o => !o.disabled);
+
+    const fun = document.getElementById('chave-funcionario');
+    const anterior = fun.value;
+    fun.replaceChildren();
+    for (const [valor, texto] of [['', 'Selecione o funcionário...'], ...chaveFuncionarios.map(f => [f, f]), ['__outro', '+ Adicionar outro nome (digitar)']]) {
+        const o = document.createElement('option');
+        o.value = valor;
+        o.textContent = texto;
+        fun.appendChild(o);
+    }
+    if ([...fun.options].some(o => o.value === anterior)) fun.value = anterior;
+    window.chaveTrocarFuncionario(false);
+
+    const a = document.getElementById('admin-lista-chaves');
+    const b = document.getElementById('admin-lista-funcionarios');
+    if (document.activeElement !== a) a.value = chaveCatalogo.join('\n');
+    if (document.activeElement !== b) b.value = chaveFuncionarios.join('\n');
 }
-window.chaveTrocarTipo=()=>{const fun=document.getElementById('chave-tipo').value==='funcionario';document.getElementById('chave-bloco-funcionario').classList.toggle('hidden',!fun);document.getElementById('chave-bloco-morador').classList.toggle('hidden',fun);};
-window.chaveTrocarFuncionario=()=>document.getElementById('chave-outro-funcionario').classList.toggle('hidden',document.getElementById('chave-funcionario').value!=='__outro');
-window.chaveBuscarMorador=()=>{
- chaveMoradorSelecionado=null;document.getElementById('chave-morador-selecionado').textContent='Selecione o morador da lista.';
- const termo=document.getElementById('chave-morador-busca').value.trim().toLocaleLowerCase('pt-BR');
- const div=document.getElementById('chave-morador-sugestoes');div.replaceChildren();if(termo.length<2)return;
- const matches=moradoresLista.filter(m=>`${m.nome||''} ${m.aptoNum||''}${m.aptoLetra||''} ${m.bloco||''} ${m.apartamento||''}`.toLocaleLowerCase('pt-BR').includes(termo)).slice(0,12);
- for(const m of matches){const bt=document.createElement('button');bt.type='button';bt.className='btn btn-secondary';bt.textContent=`${m.nome} — ${formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento)}`;
- bt.onclick=()=>{chaveMoradorSelecionado=m;document.getElementById('chave-morador-busca').value=m.nome;document.getElementById('chave-morador-selecionado').textContent=`Selecionado: ${m.nome} — ${formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento)}`;div.replaceChildren();};div.appendChild(bt);}
+
+// Passo 1: seleciona entre 'morador' e 'funcionario' e avança automaticamente para o Passo 2
+window.chaveEscolherTipo = function(tipo) {
+    const inputTipo = document.getElementById('chave-tipo');
+    if (inputTipo) inputTipo.value = tipo;
+    document.getElementById('btn-tipo-morador')?.classList.toggle('ativo', tipo === 'morador');
+    document.getElementById('btn-tipo-funcionario')?.classList.toggle('ativo', tipo === 'funcionario');
+    window.chaveTrocarTipo();
+    window.chaveIrEtapa(2);
 };
-function chaveRenderRegistros(){
- chaveCatalogosRender();
- const ativos=chaveRegistros.filter(r=>r.status==='retirado').sort((a,b)=>new Date(b.dataRetirada?.toDate?.()||b.dataRetirada||0)-new Date(a.dataRetirada?.toDate?.()||a.dataRetirada||0));
- const hist=chaveRegistros.filter(r=>r.status==='devolvido').sort((a,b)=>new Date(b.dataDevolucao?.toDate?.()||b.dataDevolucao||0)-new Date(a.dataDevolucao?.toDate?.()||a.dataDevolucao||0));
- const display=(r,ativo)=>{const el=document.createElement('div');el.className='chave-item';
- const titulo=document.createElement('strong');titulo.textContent='🔑 '+r.chave;el.appendChild(titulo);
- const p=document.createElement('p');p.textContent=`${r.tipo==='morador'?'Morador':'Funcionário'}: ${r.nome} ${r.apartamento?'· Apto '+r.apartamento:''}`;el.appendChild(p);
- const tempo=document.createElement('p');tempo.className='chave-muted';tempo.textContent=`Retirada: ${chaveData(r.dataRetirada)}${ativo?'':' · Devolvida: '+chaveData(r.dataDevolucao)}`;el.appendChild(tempo);
- if(r.observacao){const ob=document.createElement('p');ob.textContent='Observação: '+r.observacao;el.appendChild(ob);}
- if(r.recebidoPor){const rec=document.createElement('p');rec.textContent='Recebida por: '+r.recebidoPor;el.appendChild(rec);}
- if(ativo){const bt=document.createElement('button');bt.className='btn btn-chave';bt.textContent='📥 REGISTRAR DEVOLUÇÃO';bt.onclick=()=>window.chaveDevolver(r.id);el.appendChild(bt);}
- return el;};
- for(const [id,arr,ativo,empty] of [['chave-ativas',ativos,true,'Nenhuma chave em uso.'],['chave-historico',hist,false,'Ainda não há devoluções.']]){const d=document.getElementById(id);d.replaceChildren();if(!arr.length)d.textContent=empty;else for(const r of arr.slice(0,150))d.appendChild(display(r,ativo));}
+
+// Alterna os campos visíveis no Passo 2 conforme o tipo escolhido
+window.chaveTrocarTipo = function() {
+    const fun = document.getElementById('chave-tipo')?.value === 'funcionario';
+    document.getElementById('chave-bloco-funcionario')?.classList.toggle('hidden', !fun);
+    document.getElementById('chave-bloco-morador')?.classList.toggle('hidden', fun);
+    const titulo = document.getElementById('chave-titulo-etapa-2');
+    if (titulo) {
+        titulo.textContent = fun ? 'Qual funcionário está retirando?' : 'Qual morador está retirando?';
+    }
+};
+
+// Passo 2 (Funcionário): se escolher um funcionário da lista, avança automaticamente para o Passo 3
+window.chaveTrocarFuncionario = function(avancarAuto = false) {
+    const selectFun = document.getElementById('chave-funcionario');
+    if (!selectFun) return;
+    const valor = selectFun.value;
+    document.getElementById('chave-outro-funcionario')?.classList.toggle('hidden', valor !== '__outro');
+    if (valor === '__outro') {
+        setTimeout(() => document.getElementById('chave-funcionario-outro')?.focus(), 50);
+    } else if (avancarAuto && valor !== '') {
+        window.chaveIrEtapa(3);
+    }
+};
+
+// Passo 2 (Morador): pesquisa moradores e, ao clicar na sugestão, avança automaticamente para o Passo 3
+window.chaveBuscarMorador = function() {
+    chaveMoradorSelecionado = null;
+    document.getElementById('chave-morador-selecionado').textContent = 'Toque no nome do morador na lista para avançar automaticamente.';
+    const termo = document.getElementById('chave-morador-busca').value.trim().toLocaleLowerCase('pt-BR');
+    const div = document.getElementById('chave-morador-sugestoes');
+    div.replaceChildren();
+    if (termo.length < 2) return;
+
+    const termoNormalizado = termo.replace(/[\s\-\/]/g, '');
+    const matches = moradoresLista.filter(m => {
+        const nomeMatch = (m.nome || '').toLocaleLowerCase('pt-BR').includes(termo);
+        const aptoFull = formatarAptoDisplay(m.aptoNum, m.aptoLetra, m.bloco, m.apartamento).toLocaleLowerCase('pt-BR').replace(/[\s\-\/]/g, '');
+        const aptoMatch = termoNormalizado.length >= 2 && aptoFull.includes(termoNormalizado);
+        return nomeMatch || aptoMatch;
+    }).slice(0, 6);
+
+    for (const m of matches) {
+        const divItem = document.createElement('div');
+        divItem.className = 'sugestao-item';
+        const exibeApto = formatarAptoDisplay(m.aptoNum, m.aptoLetra, m.bloco, m.apartamento);
+        divItem.innerHTML = `<strong>${chaveEsc(m.nome)}</strong> <span style="font-size:0.8rem; color:#2167c8; margin-left:10px;">[${chaveEsc(exibeApto)}]</span>`;
+        divItem.onclick = () => {
+            chaveMoradorSelecionado = m;
+            document.getElementById('chave-morador-busca').value = m.nome;
+            document.getElementById('chave-morador-selecionado').textContent = `Selecionado: ${m.nome} — ${exibeApto}`;
+            div.replaceChildren();
+            window.chaveIrEtapa(3);
+        };
+        div.appendChild(divItem);
+    }
+};
+
+// Controla a navegação passo a passo (Etapas 1, 2 e 3)
+window.chaveIrEtapa = function(n) {
+    if (n < 1 || n > 3) return;
+    const tipo = document.getElementById('chave-tipo')?.value || 'morador';
+
+    if (n === 3) {
+        if (tipo === 'morador') {
+            if (!chaveMoradorSelecionado) {
+                window.mostrarBanner('Selecione um morador da lista para continuar.', 'danger');
+                document.getElementById('chave-morador-busca')?.focus();
+                return;
+            }
+            const unidade = formatarAptoDisplay(chaveMoradorSelecionado.aptoNum, chaveMoradorSelecionado.aptoLetra, chaveMoradorSelecionado.bloco, chaveMoradorSelecionado.apartamento);
+            document.getElementById('chave-resumo').innerHTML =
+                `👤 <strong>Morador:</strong> ${chaveEsc(chaveMoradorSelecionado.nome)}<br>` +
+                `🏢 <strong>Unidade:</strong> ${chaveEsc(unidade)}`;
+        } else {
+            const f = document.getElementById('chave-funcionario').value;
+            const nomeFun = f === '__outro' ? document.getElementById('chave-funcionario-outro').value.trim() : f;
+            if (!nomeFun) {
+                window.mostrarBanner('Selecione ou digite o nome do funcionário.', 'danger');
+                return;
+            }
+            document.getElementById('chave-resumo').innerHTML =
+                `🛠️ <strong>Retirada Interna:</strong> ${chaveEsc(nomeFun)}`;
+        }
+    }
+
+    chaveEtapaAtual = n;
+    for (let i = 1; i <= 3; i++) {
+        document.getElementById('chave-etapa-' + i)?.classList.toggle('hidden', i !== n);
+        document.getElementById('cdot-' + i)?.classList.toggle('active', i === n);
+    }
+
+    const titulos = [
+        'Passo 1 de 3 — Quem vai retirar?',
+        'Passo 2 de 3 — Identificar a pessoa',
+        'Passo 3 de 3 — Escolher a chave e confirmar'
+    ];
+    document.getElementById('chave-etapa-info').textContent = titulos[n - 1];
+    window.chaveTrocarTipo();
+
+    if (n === 2 && tipo === 'morador') {
+        setTimeout(() => document.getElementById('chave-morador-busca')?.focus(), 60);
+    }
+};
+
+function chaveRenderRegistros() {
+    chaveCatalogosRender();
+    const ativos = chaveRegistros.filter(r => r.status === 'retirado').sort((a,b) => new Date(b.dataRetirada?.toDate?.() || b.dataRetirada || 0) - new Date(a.dataRetirada?.toDate?.() || a.dataRetirada || 0));
+    const hist = [...chaveRegistros].sort((a,b) => new Date(b.dataRetirada?.toDate?.() || b.dataRetirada || 0) - new Date(a.dataRetirada?.toDate?.() || a.dataRetirada || 0));
+    const display = (r, ativo) => {
+        const el = document.createElement('div');
+        el.className = 'chave-item';
+        const titulo = document.createElement('strong');
+        titulo.textContent = '🔑 ' + r.chave + (ativo ? ' — EM USO' : ' — DEVOLVIDA');
+        el.appendChild(titulo);
+        const p = document.createElement('p');
+        p.textContent = `${r.tipo === 'morador' ? 'Morador' : 'Funcionário'}: ${r.nome} ${r.apartamento ? '· Apto ' + r.apartamento : ''}`;
+        el.appendChild(p);
+        const tempo = document.createElement('p');
+        tempo.className = 'chave-muted';
+        tempo.textContent = `Retirada: ${chaveData(r.dataRetirada)}${ativo ? '' : ' · Devolvida: ' + chaveData(r.dataDevolucao)}`;
+        el.appendChild(tempo);
+        if (r.observacao) {
+            const ob = document.createElement('p');
+            ob.textContent = 'Observação: ' + r.observacao;
+            el.appendChild(ob);
+        }
+        if (r.recebidoPor) {
+            const rec = document.createElement('p');
+            rec.textContent = 'Recebida por: ' + r.recebidoPor;
+            el.appendChild(rec);
+        }
+        if (ativo) {
+            const bt = document.createElement('button');
+            bt.className = 'btn btn-chave';
+            bt.textContent = '📥 REGISTRAR DEVOLUÇÃO';
+            bt.onclick = () => window.chaveDevolver(r.id);
+            el.appendChild(bt);
+        }
+        for (const [campo, label] of [['dataRetirada', 'retirada'], ['dataDevolucao', 'devolução']]) {
+            if (!r[campo]) continue;
+            const bt = document.createElement('button');
+            bt.className = 'btn btn-secondary';
+            bt.textContent = '✏️ Editar data/hora da ' + label;
+            bt.onclick = () => window.abrirEditarDataHora(r.id, campo, r[campo], 'outrasChavesRetiradas');
+            el.appendChild(bt);
+        }
+        if (currentUser?.role === 'admin') {
+            const bt = document.createElement('button');
+            bt.className = 'btn btn-danger';
+            bt.textContent = '🗑️ APAGAR REGISTRO';
+            bt.onclick = () => window.apagarHistoricoArea('outrasChavesRetiradas', r.id);
+            el.appendChild(bt);
+        }
+        return el;
+    };
+    for (const [id, arr, ativo, empty] of [['chave-ativas', ativos, true, 'Nenhuma chave em uso.'], ['chave-historico', hist, false, 'Nenhuma retirada registrada.']]) {
+        const d = document.getElementById(id);
+        d.replaceChildren();
+        if (!arr.length) d.textContent = empty;
+        else for (const r of arr.slice(0, 150)) d.appendChild(display(r, r.status === 'retirado'));
+    }
 }
-window.chaveRegistrar=async()=>{
- const tipo=document.getElementById('chave-tipo').value,chave=document.getElementById('chave-item-select').value;
- if(!chave){window.mostrarBanner('Selecione uma chave disponível.','danger');return;}
- let nome='',apartamento='',telefone='';
- if(tipo==='morador'){
-  const m=chaveMoradorSelecionado;if(!m){window.mostrarBanner('Selecione um morador cadastrado.','danger');return;}
-  nome=m.nome;apartamento=formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento);telefone=m.telefone||'';
- }else{const v=document.getElementById('chave-funcionario').value;nome=v==='__outro'?document.getElementById('chave-funcionario-outro').value.trim():v;if(!nome){window.mostrarBanner('Selecione ou digite o funcionário.','danger');return;}}
- if(chaveRegistros.some(r=>r.chave===chave&&r.status==='retirado')){window.mostrarBanner('Esta chave já consta em uso.','danger');return;}
- const btn=document.querySelector('#tab-outras-chaves .btn-chave');btn.disabled=true;
- try{await addDoc(collection(db,'outrasChavesRetiradas'),{chave,tipo,nome,apartamento,telefone,moradorId:tipo==='morador'?(chaveMoradorSelecionado.id||null):null,observacao:document.getElementById('chave-observacao').value.trim(),status:'retirado',dataRetirada:new Date(),registradoPor:currentUser?.nome||''});
-  document.getElementById('chave-observacao').value='';window.mostrarBanner('RETIRADA REGISTRADA','success');
-  if(tipo==='morador'&&telefone&&confirm('Retirada registrada. Abrir WhatsApp do morador com a confirmação?')){
-   const numero=telefone.replace(/\D/g,'');const msg=`Portal Play: Confirmamos a retirada da chave ${chave} por ${nome} (${apartamento}) em ${new Date().toLocaleString('pt-BR')}.`;
-   window.open(`https://wa.me/55${numero}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
-  }
- }catch(e){console.error(e);window.mostrarBanner('Erro ao registrar. Verifique permissão do Firestore.','danger');}finally{btn.disabled=false;}
+
+window.chaveRegistrar = async () => {
+    const tipo = document.getElementById('chave-tipo').value;
+    const chave = document.getElementById('chave-item-select').value;
+    if (!chave) { window.mostrarBanner('Selecione uma chave disponível.', 'danger'); return; }
+    let nome = '', apartamento = '', telefone = '';
+    if (tipo === 'morador') {
+        const m = chaveMoradorSelecionado;
+        if (!m) { window.mostrarBanner('Selecione um morador cadastrado.', 'danger'); return; }
+        nome = m.nome;
+        apartamento = formatarAptoDisplay(m.aptoNum, m.aptoLetra, m.bloco, m.apartamento);
+        telefone = m.telefone || '';
+    } else {
+        const v = document.getElementById('chave-funcionario').value;
+        nome = v === '__outro' ? document.getElementById('chave-funcionario-outro').value.trim() : v;
+        if (!nome) { window.mostrarBanner('Selecione ou digite o funcionário.', 'danger'); return; }
+    }
+    if (chaveRegistros.some(r => r.chave === chave && r.status === 'retirado')) {
+        window.mostrarBanner('Esta chave já consta em uso.', 'danger');
+        return;
+    }
+    const btn = document.getElementById('chave-confirmar');
+    btn.disabled = true;
+    try {
+        await addDoc(collection(db, 'outrasChavesRetiradas'), {
+            chave, tipo, nome, apartamento, telefone,
+            moradorId: tipo === 'morador' ? (chaveMoradorSelecionado.id || null) : null,
+            observacao: document.getElementById('chave-observacao').value.trim(),
+            status: 'retirado',
+            dataRetirada: new Date(),
+            registradoPor: currentUser?.nome || ''
+        });
+        document.getElementById('chave-observacao').value = '';
+        document.getElementById('chave-morador-busca').value = '';
+        document.getElementById('chave-funcionario-outro').value = '';
+        document.getElementById('chave-funcionario').value = '';
+        chaveMoradorSelecionado = null;
+        window.chaveIrEtapa(1);
+        window.mostrarBanner('RETIRADA REGISTRADA', 'success');
+        if (tipo === 'morador' && telefone && confirm('Retirada registrada. Abrir WhatsApp do morador com a confirmação?')) {
+            const numero = telefone.replace(/\D/g, '');
+            const msg = `Portal Play: Confirmamos a retirada da chave ${chave} por ${nome} (${apartamento}) em ${new Date().toLocaleString('pt-BR')}.`;
+            window.open(`https://wa.me/55${numero}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+        }
+    } catch (e) {
+        console.error(e);
+        window.mostrarBanner('Erro ao registrar. Verifique permissão do Firestore.', 'danger');
+    } finally {
+        btn.disabled = false;
+    }
 };
-window.chaveDevolver=async id=>{
- const r=chaveRegistros.find(x=>x.id===id);if(!r)return;
- const padrao=currentUser?.nome||'';const responsavel=prompt(`Quem recebeu a devolução da chave "${r.chave}"?`,padrao);
- if(responsavel===null)return;if(!responsavel.trim()){window.mostrarBanner('Informe quem recebeu a chave.','danger');return;}
- if(!confirm(`Confirmar devolução de "${r.chave}" por ${r.nome}?`))return;
- try{await updateDoc(doc(db,'outrasChavesRetiradas',id),{status:'devolvido',dataDevolucao:new Date(),recebidoPor:responsavel.trim()});window.mostrarBanner('DEVOLUÇÃO REGISTRADA','success');}
- catch(e){console.error(e);window.mostrarBanner('Falha ao registrar devolução.','danger');}
+
+window.chaveDevolver = async id => {
+    const r = chaveRegistros.find(x => x.id === id);
+    if (!r) return;
+    const padrao = currentUser?.nome || '';
+    const responsavel = prompt(`Quem recebeu a devolução da chave "${r.chave}"?`, padrao);
+    if (responsavel === null) return;
+    if (!responsavel.trim()) { window.mostrarBanner('Informe quem recebeu a chave.', 'danger'); return; }
+    if (!confirm(`Confirmar devolução de "${r.chave}" por ${r.nome}?`)) return;
+    try {
+        await updateDoc(doc(db, 'outrasChavesRetiradas', id), { status: 'devolvido', dataDevolucao: new Date(), recebidoPor: responsavel.trim() });
+        window.mostrarBanner('DEVOLUÇÃO REGISTRADA', 'success');
+    } catch (e) {
+        console.error(e);
+        window.mostrarBanner('Falha ao registrar devolução.', 'danger');
+    }
 };
-window.chaveSalvarCatalogos=async()=>{
- if(currentUser?.role!=='admin'){window.mostrarBanner('Somente administrador pode editar.','danger');return;}
- const nomes=id=>[...new Set(document.getElementById(id).value.split(/\r?\n/).map(chaveNomeItem).filter(Boolean))];
- const chaves=nomes('admin-lista-chaves'),funcionarios=nomes('admin-lista-funcionarios');
- if(!chaves.length){window.mostrarBanner('Cadastre ao menos uma chave.','danger');return;}
- try{await setDoc(doc(db,'configuracoes','outrasChaves'),{chaves,funcionarios,alteradoEm:new Date(),alteradoPor:currentUser?.nome||''});window.mostrarBanner('CATÁLOGOS SALVOS','success');}
- catch(e){console.error(e);window.mostrarBanner('Falha ao salvar. Verifique o Firestore.','danger');}
+
+window.chaveSalvarCatalogos = async () => {
+    if (currentUser?.role !== 'admin') { window.mostrarBanner('Somente administrador pode editar.', 'danger'); return; }
+    const nomes = id => [...new Set(document.getElementById(id).value.split(/\r?\n/).map(chaveNomeItem).filter(Boolean))];
+    const chaves = nomes('admin-lista-chaves'), funcionarios = nomes('admin-lista-funcionarios');
+    if (!chaves.length) { window.mostrarBanner('Cadastre ao menos uma chave.', 'danger'); return; }
+    try {
+        await setDoc(doc(db, 'configuracoes', 'outrasChaves'), { chaves, funcionarios, alteradoEm: new Date(), alteradoPor: currentUser?.nome || '' });
+        window.mostrarBanner('CATÁLOGOS SALVOS', 'success');
+    } catch (e) {
+        console.error(e);
+        window.mostrarBanner('Falha ao salvar. Verifique o Firestore.', 'danger');
+    }
 };
-function chaveIniciarRealtime(){
- if(chaveUnsubConfig)chaveUnsubConfig();if(chaveUnsubRegistros)chaveUnsubRegistros();
- chaveUnsubConfig=onSnapshot(doc(db,'configuracoes','outrasChaves'),snap=>{
-  const d=snap.exists()?snap.data():{};chaveCatalogo=Array.isArray(d.chaves)?d.chaves:CHAVES_INICIAIS;chaveFuncionarios=Array.isArray(d.funcionarios)?d.funcionarios:[];chaveCatalogosRender();
- },e=>{console.error(e);window.mostrarBanner('Sem acesso à configuração de chaves.','danger');chaveCatalogosRender();});
- chaveUnsubRegistros=onSnapshot(collection(db,'outrasChavesRetiradas'),snap=>{chaveRegistros=snap.docs.map(d=>({id:d.id,...d.data()}));chaveRenderRegistros();},e=>{console.error(e);document.getElementById('chave-ativas').textContent='Não foi possível carregar. Verifique as regras do Firestore.';});
+
+function chaveIniciarRealtime() {
+    if (chaveUnsubConfig) chaveUnsubConfig();
+    if (chaveUnsubRegistros) chaveUnsubRegistros();
+    chaveUnsubConfig = onSnapshot(doc(db, 'configuracoes', 'outrasChaves'), snap => {
+        const d = snap.exists() ? snap.data() : {};
+        chaveCatalogo = Array.isArray(d.chaves) ? d.chaves : CHAVES_INICIAIS;
+        chaveFuncionarios = [...new Set([...FUNCIONARIOS_INICIAIS, ...(Array.isArray(d.funcionarios) ? d.funcionarios : [])])];
+        chaveCatalogosRender();
+    }, e => {
+        console.error(e);
+        window.mostrarBanner('Sem acesso à configuração de chaves.', 'danger');
+        chaveCatalogosRender();
+    });
+    chaveUnsubRegistros = onSnapshot(collection(db, 'outrasChavesRetiradas'), snap => {
+        chaveRegistros = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        chaveRenderRegistros();
+    }, e => {
+        console.error(e);
+        document.getElementById('chave-ativas').textContent = 'Não foi possível carregar. Verifique as regras do Firestore.';
+    });
 }
+
+window.verAreaHistorico = (area, historico) => {
+    document.getElementById(area + '-view-registro').classList.toggle('hidden', historico);
+    document.getElementById(area + '-view-historico').classList.toggle('hidden', !historico);
+    document.getElementById(area + '-nav-registro').className = historico ? 'btn btn-secondary' : 'btn btn-primary';
+    document.getElementById(area + '-nav-historico').className = historico ? 'btn btn-primary' : 'btn btn-secondary';
+};
+
+function adicionarAcoesHistorico(card, area, r, campos, excluir = true) {
+    const a = document.createElement('div');
+    a.className = 'btn-row';
+    a.style.marginTop = '12px';
+    for (const [campo, label] of campos) {
+        if (!r[campo]) continue;
+        const b = document.createElement('button');
+        b.className = 'btn btn-secondary';
+        b.textContent = '✏️ Editar data/hora de ' + label;
+        b.onclick = () => window.abrirEditarDataHora(r.id, campo, r[campo], area);
+        a.appendChild(b);
+    }
+    if (excluir && currentUser?.role === 'admin') {
+        const b = document.createElement('button');
+        b.className = 'btn btn-danger';
+        b.textContent = '🗑️ APAGAR REGISTRO';
+        b.onclick = () => window.apagarHistoricoArea(area, r.id);
+        a.appendChild(b);
+    }
+    card.appendChild(a);
+}
+
+window.apagarHistoricoArea = async (area, id) => {
+    if (currentUser?.role !== 'admin') return;
+    if (!['outrasChavesRetiradas', 'prestadores', 'ocorrencias'].includes(area)) return;
+    if (!confirm('Apagar permanentemente este registro do histórico? Esta ação não pode ser desfeita.')) return;
+    try {
+        await deleteDoc(doc(db, area, id));
+        window.mostrarBanner('REGISTRO APAGADO', 'success');
+    } catch (e) {
+        console.error(e);
+        window.mostrarBanner('Não foi possível apagar. Verifique sua permissão.', 'danger');
+    }
+};
+
+
+let festaEventos=[],festaAtual='',festaMorador=null,festaUnsub=null,festaCarregando=false;
+const festaNormalizar=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').replace(/\s+/g,' ').trim();
+function festaLerNomes(texto){const vistos=new Set(),nomes=[],repetidos=[];for(const linha of texto.split(/\r?\n/)){const nome=linha.replace(/^\s*(?:[-•*]|\d+[.)-])\s*/, '').trim();if(!nome)continue;const chave=festaNormalizar(nome);if(vistos.has(chave)){repetidos.push(nome);continue;}vistos.add(chave);nomes.push(nome);}return {nomes,repetidos};}
+window.festaNova=()=>{festaAtual='';festaMorador=null;document.getElementById('festa-evento').value='';for(const id of ['festa-morador','festa-nomes','festa-busca'])document.getElementById(id).value='';document.getElementById('festa-sugestoes').replaceChildren();document.getElementById('festa-morador-escolhido').textContent='Selecione o responsável pela festa.';document.getElementById('festa-previa').classList.add('hidden');document.getElementById('festa-cadastro').classList.remove('hidden');document.getElementById('festa-controle').classList.add('hidden');};
+window.festaBuscarMorador=()=>{festaMorador=null;document.getElementById('festa-morador-escolhido').textContent='Selecione o responsável pela festa.';const box=document.getElementById('festa-sugestoes');box.replaceChildren();const q=festaNormalizar(document.getElementById('festa-morador').value);if(q.length<2)return;const encontrados=moradoresLista.filter(m=>festaNormalizar([m.nome,m.aptoNum,m.aptoLetra,m.bloco,m.apartamento,formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento)].join(' ')).includes(q)).slice(0,15);if(!encontrados.length)box.textContent='Nenhum morador encontrado.';for(const m of encontrados){const b=document.createElement('button');b.className='btn btn-secondary';b.textContent=m.nome+' — '+formatarAptoDisplay(m.aptoNum,m.aptoLetra,m.bloco,m.apartamento);b.onclick=()=>{festaMorador=m;document.getElementById('festa-morador').value=b.textContent;document.getElementById('festa-morador-escolhido').textContent='Responsável: '+b.textContent;box.replaceChildren();};box.appendChild(b);}};
+window.festaPrever=()=>{const {nomes,repetidos}=festaLerNomes(document.getElementById('festa-nomes').value);if(!festaMorador||!document.getElementById('festa-data').value||!nomes.length){window.mostrarBanner('Selecione o morador, a data e informe os convidados.','danger');return;}if(nomes.length>800){window.mostrarBanner('Use até 800 convidados por lista.','danger');return;}document.getElementById('festa-previa').classList.remove('hidden');document.getElementById('festa-previa-info').textContent=nomes.length+' convidados.'+(repetidos.length?' Nomes repetidos removidos: '+repetidos.join(', ')+'. Se forem pessoas diferentes, acrescente sobrenome ou identificação.':' Confira os nomes antes de aprovar.');const box=document.getElementById('festa-previa-nomes');box.replaceChildren();for(const nome of nomes){const p=document.createElement('p');p.textContent=nome;box.appendChild(p);}};
+window.festaSalvar=async()=>{if(festaCarregando||!currentUser)return;const {nomes}=festaLerNomes(document.getElementById('festa-nomes').value);const data=document.getElementById('festa-data').value;if(!festaMorador||!data||!nomes.length||nomes.length>800)return;festaCarregando=true;document.getElementById('festa-salvar').disabled=true;try{const r=await addDoc(collection(db,'festasConvidados'),{moradorNome:festaMorador.nome,apartamento:formatarAptoDisplay(festaMorador.aptoNum,festaMorador.aptoLetra,festaMorador.bloco,festaMorador.apartamento),data,criadoEm:new Date().toISOString(),criadoPor:currentUser.nome||'',convidados:nomes.map((nome,i)=>({id:String(i),nome,entrada:null}))});festaAtual=r.id;document.getElementById('festa-cadastro').classList.add('hidden');window.mostrarBanner('LISTA CRIADA','success');window.festaRender();}catch(e){console.error(e);window.mostrarBanner('Não foi possível salvar a lista. Verifique conexão e permissão do Firebase.','danger');}finally{festaCarregando=false;document.getElementById('festa-salvar').disabled=false;}};
+window.festaSelecionar=id=>{festaAtual=id;document.getElementById('festa-busca').value='';document.getElementById('festa-cadastro').classList.toggle('hidden',!!id);window.festaRender();};
+window.festaRender=()=>{const evento=festaEventos.find(e=>e.id===festaAtual);document.getElementById('festa-controle').classList.toggle('hidden',!evento);if(!evento)return;const pessoas=evento.convidados||[],entraram=pessoas.filter(p=>p.entrada);document.getElementById('festa-titulo').textContent='Festa de '+evento.moradorNome+' — '+evento.apartamento+' — '+evento.data.split('-').reverse().join('/');document.getElementById('festa-contadores').textContent=pessoas.length+' convidados · '+entraram.length+' entraram · '+(pessoas.length-entraram.length)+' aguardando';const q=festaNormalizar(document.getElementById('festa-busca').value);for(const [id,lista] of [['festa-pendentes',pessoas.filter(p=>!p.entrada).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'))],['festa-entradas',entraram.sort((a,b)=>new Date(b.entrada)-new Date(a.entrada))]]){const box=document.getElementById(id);box.replaceChildren();const filtrados=lista.filter(p=>festaNormalizar(p.nome).includes(q));if(!filtrados.length)box.textContent=q?'Nenhum nome encontrado.':id==='festa-pendentes'?'Todos os convidados entraram.':'Nenhuma entrada registrada.';for(const p of filtrados){const row=document.createElement('div');row.className='festa-pessoa';const nome=document.createElement('span');nome.textContent=p.nome+(p.entrada?' — Entrada: '+new Date(p.entrada).toLocaleString('pt-BR'):'');const b=document.createElement('button');b.className=p.entrada?'btn btn-secondary':'btn btn-success';b.textContent=p.entrada?'↶ Desfazer entrada':'✓ Registrar entrada';b.onclick=()=>window.festaEntrada(evento.id,p.id,!!p.entrada,b);row.append(nome,b);box.appendChild(row);}}};
+window.festaEntrada=async(eventoId,pessoaId,desfazer,botao)=>{if(!currentUser)return;if(desfazer&&!confirm('Desfazer esta entrada e devolver o convidado à lista de espera?'))return;if(botao)botao.disabled=true;try{await runTransaction(db,async tx=>{const ref=doc(db,'festasConvidados',eventoId),snap=await tx.get(ref);if(!snap.exists())throw Error('Festa não encontrada');const convidados=snap.data().convidados.map(p=>({...p}));const p=convidados.find(p=>p.id===pessoaId);if(!p)throw Error('Convidado não encontrado');if(desfazer){p.entrada=null;p.registradoPor='';}else{if(p.entrada)return;p.entrada=new Date().toISOString();p.registradoPor=currentUser.nome||'';}tx.update(ref,{convidados});});}catch(e){console.error(e);window.mostrarBanner('Não foi possível registrar. Confira a conexão e tente novamente.','danger');}finally{if(botao)botao.disabled=false;}};
+function festaIniciar(){if(festaUnsub)festaUnsub();const data=new Date();document.getElementById('festa-data').value=data.getFullYear()+'-'+String(data.getMonth()+1).padStart(2,'0')+'-'+String(data.getDate()).padStart(2,'0');document.getElementById('festa-conexao').textContent='Carregando listas...';festaUnsub=onSnapshot(query(collection(db,'festasConvidados'),orderBy('criadoEm','desc'),limit(100)),snap=>{festaEventos=snap.docs.map(d=>({...d.data(),id:d.id}));const select=document.getElementById('festa-evento');select.replaceChildren();const vazio=document.createElement('option');vazio.value='';vazio.textContent='Selecione uma festa';select.appendChild(vazio);for(const e of festaEventos){const o=document.createElement('option');o.value=e.id;o.textContent=e.data.split('-').reverse().join('/')+' — '+e.moradorNome+' — '+e.apartamento;select.appendChild(o);}select.value=festaAtual;document.getElementById('festa-conexao').textContent='Últimas 100 listas · atualização em tempo real';window.festaRender();},e=>{console.error(e);document.getElementById('festa-conexao').textContent='Não foi possível carregar as listas. Verifique conexão e permissão do Firebase.';});}
 
         window.onload = () => {
             // A sessão de login é temporária: fechar o app/aba encerra o acesso.
